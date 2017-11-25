@@ -1,3 +1,9 @@
+<?php
+	session_start();
+	if(!isset($_SESSION['id'])){
+		header("location:../index.php");
+	}
+?>
 <!DOCTYPE html>
 <html lang="en">
 	<head>
@@ -15,31 +21,31 @@
 		<!-- page specific plugin styles -->
 
 		<!-- text fonts -->
-		<link rel="stylesheet" href="assets/css/fonts.googleapis.com.css" />
+		<link rel="stylesheet" href="../assets/css/fonts.googleapis.com.css" />
 
 		<!-- ace styles -->
-		<link rel="stylesheet" href="assets/css/ace.min.css" class="ace-main-stylesheet" id="main-ace-style" />
+		<link rel="stylesheet" href="../assets/css/ace.min.css" class="ace-main-stylesheet" id="main-ace-style" />
 
 		<!--[if lte IE 9]>
-			<link rel="stylesheet" href="assets/css/ace-part2.min.css" class="ace-main-stylesheet" />
+			<link rel="stylesheet" href="../assets/css/ace-part2.min.css" class="ace-main-stylesheet" />
 		<![endif]-->
 		<link rel="stylesheet" href="../assets/css/ace-skins.min.css" />
 		<link rel="stylesheet" href="../assets/css/ace-rtl.min.css" />
 
 		<!--[if lte IE 9]>
-		  <link rel="stylesheet" href="assets/css/ace-ie.min.css" />
+		  <link rel="stylesheet" href="../assets/css/ace-ie.min.css" />
 		<![endif]-->
 
 		<!-- inline styles related to this page -->
 
 		<!-- ace settings handler -->
-		<script src="assets/js/ace-extra.min.js"></script>
+		<script src="../assets/js/ace-extra.min.js"></script>
 
 		<!-- HTML5shiv and Respond.js for IE8 to support HTML5 elements and media queries -->
 
 		<!--[if lte IE 8]>
-		<script src="assets/js/html5shiv.min.js"></script>
-		<script src="assets/js/respond.min.js"></script>
+		<script src="../assets/js/html5shiv.min.js"></script>
+		<script src="../assets/js/respond.min.js"></script>
 		<![endif]-->
 	</head>
 
@@ -57,7 +63,7 @@
 				</button>
 
 				<div class="navbar-header pull-left">
-					<a href="index.html" class="navbar-brand">
+					<a href="index.php" class="navbar-brand">
 						<small>
 							<i class="fa fa-leaf"></i>
 							Ace Admin
@@ -228,7 +234,7 @@
 									<ul class="dropdown-menu dropdown-navbar">
 										<li>
 											<a href="#" class="clearfix">
-												<img src="assets/images/avatars/avatar.png" class="msg-photo" alt="Alex's Avatar" />
+												<img src="../assets/images/avatars/avatar.png" class="msg-photo" alt="Alex's Avatar" />
 												<span class="msg-body">
 													<span class="msg-title">
 														<span class="blue">Alex:</span>
@@ -245,7 +251,7 @@
 
 										<li>
 											<a href="#" class="clearfix">
-												<img src="assets/images/avatars/avatar3.png" class="msg-photo" alt="Susan's Avatar" />
+												<img src="../assets/images/avatars/avatar3.png" class="msg-photo" alt="Susan's Avatar" />
 												<span class="msg-body">
 													<span class="msg-title">
 														<span class="blue">Susan:</span>
@@ -262,7 +268,7 @@
 
 										<li>
 											<a href="#" class="clearfix">
-												<img src="assets/images/avatars/avatar4.png" class="msg-photo" alt="Bob's Avatar" />
+												<img src="../assets/images/avatars/avatar4.png" class="msg-photo" alt="Bob's Avatar" />
 												<span class="msg-body">
 													<span class="msg-title">
 														<span class="blue">Bob:</span>
@@ -279,7 +285,7 @@
 
 										<li>
 											<a href="#" class="clearfix">
-												<img src="assets/images/avatars/avatar2.png" class="msg-photo" alt="Kate's Avatar" />
+												<img src="../assets/images/avatars/avatar2.png" class="msg-photo" alt="Kate's Avatar" />
 												<span class="msg-body">
 													<span class="msg-title">
 														<span class="blue">Kate:</span>
@@ -296,7 +302,7 @@
 
 										<li>
 											<a href="#" class="clearfix">
-												<img src="assets/images/avatars/avatar5.png" class="msg-photo" alt="Fred's Avatar" />
+												<img src="../assets/images/avatars/avatar5.png" class="msg-photo" alt="Fred's Avatar" />
 												<span class="msg-body">
 													<span class="msg-title">
 														<span class="blue">Fred:</span>
@@ -314,7 +320,7 @@
 								</li>
 
 								<li class="dropdown-footer">
-									<a href="inbox.html">
+									<a href="inbox.php">
 										See all messages
 										<i class="ace-icon fa fa-arrow-right"></i>
 									</a>
@@ -324,10 +330,10 @@
 
 						<li class="light-blue dropdown-modal">
 							<a data-toggle="dropdown" href="#" class="dropdown-toggle">
-								<img class="nav-user-photo" src="assets/images/avatars/user.jpg" alt="Jason's Photo" />
+								<img class="nav-user-photo" src="../assets/images/avatars/user.jpg" alt="Jason's Photo" />
 								<span class="user-info">
 									<small>Welcome,</small>
-									Jason
+									<?php echo $_SESSION['username'];?>
 								</span>
 
 								<i class="ace-icon fa fa-caret-down"></i>
@@ -342,7 +348,7 @@
 								</li>
 
 								<li>
-									<a href="profile.html">
+									<a href="profile.php">
 										<i class="ace-icon fa fa-user"></i>
 										Profile
 									</a>
@@ -351,7 +357,7 @@
 								<li class="divider"></li>
 
 								<li>
-									<a href="#">
+									<a href="logout.php">
 										<i class="ace-icon fa fa-power-off"></i>
 										Logout
 									</a>
@@ -405,7 +411,7 @@
 
 				<ul class="nav nav-list">
 					<li class="active">
-						<a href="index.html">
+						<a href="index.php">
 							<i class="menu-icon fa fa-tachometer"></i>
 							<span class="menu-text"> Dashboard </span>
 						</a>
@@ -438,7 +444,7 @@
 
 								<ul class="submenu">
 									<li class="">
-										<a href="top-menu.html">
+										<a href="top-menu.php">
 											<i class="menu-icon fa fa-caret-right"></i>
 											Top Menu
 										</a>
@@ -447,7 +453,7 @@
 									</li>
 
 									<li class="">
-										<a href="two-menu-1.html">
+										<a href="two-menu-1.php">
 											<i class="menu-icon fa fa-caret-right"></i>
 											Two Menus 1
 										</a>
@@ -456,7 +462,7 @@
 									</li>
 
 									<li class="">
-										<a href="two-menu-2.html">
+										<a href="two-menu-2.php">
 											<i class="menu-icon fa fa-caret-right"></i>
 											Two Menus 2
 										</a>
@@ -465,7 +471,7 @@
 									</li>
 
 									<li class="">
-										<a href="mobile-menu-1.html">
+										<a href="mobile-menu-1.php">
 											<i class="menu-icon fa fa-caret-right"></i>
 											Default Mobile Menu
 										</a>
@@ -474,7 +480,7 @@
 									</li>
 
 									<li class="">
-										<a href="mobile-menu-2.html">
+										<a href="mobile-menu-2.php">
 											<i class="menu-icon fa fa-caret-right"></i>
 											Mobile Menu 2
 										</a>
@@ -483,7 +489,7 @@
 									</li>
 
 									<li class="">
-										<a href="mobile-menu-3.html">
+										<a href="mobile-menu-3.php">
 											<i class="menu-icon fa fa-caret-right"></i>
 											Mobile Menu 3
 										</a>
@@ -494,7 +500,7 @@
 							</li>
 
 							<li class="">
-								<a href="typography.html">
+								<a href="typography.php">
 									<i class="menu-icon fa fa-caret-right"></i>
 									Typography
 								</a>
@@ -503,7 +509,7 @@
 							</li>
 
 							<li class="">
-								<a href="elements.html">
+								<a href="elements.php">
 									<i class="menu-icon fa fa-caret-right"></i>
 									Elements
 								</a>
@@ -512,7 +518,7 @@
 							</li>
 
 							<li class="">
-								<a href="buttons.html">
+								<a href="buttons.php">
 									<i class="menu-icon fa fa-caret-right"></i>
 									Buttons &amp; Icons
 								</a>
@@ -521,7 +527,7 @@
 							</li>
 
 							<li class="">
-								<a href="content-slider.html">
+								<a href="content-slider.php">
 									<i class="menu-icon fa fa-caret-right"></i>
 									Content Sliders
 								</a>
@@ -530,7 +536,7 @@
 							</li>
 
 							<li class="">
-								<a href="treeview.html">
+								<a href="treeview.php">
 									<i class="menu-icon fa fa-caret-right"></i>
 									Treeview
 								</a>
@@ -539,7 +545,7 @@
 							</li>
 
 							<li class="">
-								<a href="jquery-ui.html">
+								<a href="jquery-ui.php">
 									<i class="menu-icon fa fa-caret-right"></i>
 									jQuery UI
 								</a>
@@ -548,7 +554,7 @@
 							</li>
 
 							<li class="">
-								<a href="nestable-list.html">
+								<a href="nestable-list.php">
 									<i class="menu-icon fa fa-caret-right"></i>
 									Nestable Lists
 								</a>
@@ -623,7 +629,7 @@
 
 						<ul class="submenu">
 							<li class="">
-								<a href="tables.html">
+								<a href="tables.php">
 									<i class="menu-icon fa fa-caret-right"></i>
 									Simple &amp; Dynamic
 								</a>
@@ -632,7 +638,7 @@
 							</li>
 
 							<li class="">
-								<a href="jqgrid.html">
+								<a href="jqgrid.php">
 									<i class="menu-icon fa fa-caret-right"></i>
 									jqGrid plugin
 								</a>
@@ -645,7 +651,7 @@
 					<li class="">
 						<a href="#" class="dropdown-toggle">
 							<i class="menu-icon fa fa-pencil-square-o"></i>
-							<span class="menu-text"> Forms </span>
+							<span class="menu-text"> Add/Modify </span>
 
 							<b class="arrow fa fa-angle-down"></b>
 						</a>
@@ -654,45 +660,36 @@
 
 						<ul class="submenu">
 							<li class="">
-								<a href="form-elements.html">
+								<a href="form-elements.php">
 									<i class="menu-icon fa fa-caret-right"></i>
-									Form Elements
+									Add Medic
 								</a>
 
 								<b class="arrow"></b>
 							</li>
 
 							<li class="">
-								<a href="form-elements-2.html">
+								<a href="form-elements-2.php">
 									<i class="menu-icon fa fa-caret-right"></i>
-									Form Elements 2
+									Add Hospital
 								</a>
 
 								<b class="arrow"></b>
 							</li>
 
 							<li class="">
-								<a href="form-wizard.html">
+								<a href="form-wizard.php">
 									<i class="menu-icon fa fa-caret-right"></i>
-									Wizard &amp; Validation
+									Modify Medic
 								</a>
 
 								<b class="arrow"></b>
 							</li>
 
 							<li class="">
-								<a href="wysiwyg.html">
+								<a href="wysiwyg.php">
 									<i class="menu-icon fa fa-caret-right"></i>
-									Wysiwyg &amp; Markdown
-								</a>
-
-								<b class="arrow"></b>
-							</li>
-
-							<li class="">
-								<a href="dropzone.html">
-									<i class="menu-icon fa fa-caret-right"></i>
-									Dropzone File Upload
+									Modify Hospital
 								</a>
 
 								<b class="arrow"></b>
@@ -701,7 +698,7 @@
 					</li>
 
 					<li class="">
-						<a href="widgets.html">
+						<a href="widgets.php">
 							<i class="menu-icon fa fa-list-alt"></i>
 							<span class="menu-text"> Widgets </span>
 						</a>
@@ -710,7 +707,7 @@
 					</li>
 
 					<li class="">
-						<a href="calendar.html">
+						<a href="calendar.php">
 							<i class="menu-icon fa fa-calendar"></i>
 
 							<span class="menu-text">
@@ -726,7 +723,7 @@
 					</li>
 
 					<li class="">
-						<a href="gallery.html">
+						<a href="gallery.php">
 							<i class="menu-icon fa fa-picture-o"></i>
 							<span class="menu-text"> Gallery </span>
 						</a>
@@ -746,7 +743,7 @@
 
 						<ul class="submenu">
 							<li class="">
-								<a href="profile.html">
+								<a href="profile.php">
 									<i class="menu-icon fa fa-caret-right"></i>
 									User Profile
 								</a>
@@ -755,7 +752,7 @@
 							</li>
 
 							<li class="">
-								<a href="inbox.html">
+								<a href="inbox.php">
 									<i class="menu-icon fa fa-caret-right"></i>
 									Inbox
 								</a>
@@ -764,7 +761,7 @@
 							</li>
 
 							<li class="">
-								<a href="pricing.html">
+								<a href="pricing.php">
 									<i class="menu-icon fa fa-caret-right"></i>
 									Pricing Tables
 								</a>
@@ -773,7 +770,7 @@
 							</li>
 
 							<li class="">
-								<a href="invoice.html">
+								<a href="invoice.php">
 									<i class="menu-icon fa fa-caret-right"></i>
 									Invoice
 								</a>
@@ -782,7 +779,7 @@
 							</li>
 
 							<li class="">
-								<a href="timeline.html">
+								<a href="timeline.php">
 									<i class="menu-icon fa fa-caret-right"></i>
 									Timeline
 								</a>
@@ -791,7 +788,7 @@
 							</li>
 
 							<li class="">
-								<a href="search.html">
+								<a href="search.php">
 									<i class="menu-icon fa fa-caret-right"></i>
 									Search Results
 								</a>
@@ -800,7 +797,7 @@
 							</li>
 
 							<li class="">
-								<a href="email.html">
+								<a href="email.php">
 									<i class="menu-icon fa fa-caret-right"></i>
 									Email Templates
 								</a>
@@ -809,7 +806,7 @@
 							</li>
 
 							<li class="">
-								<a href="login.html">
+								<a href="login.php">
 									<i class="menu-icon fa fa-caret-right"></i>
 									Login &amp; Register
 								</a>
@@ -836,7 +833,7 @@
 
 						<ul class="submenu">
 							<li class="">
-								<a href="faq.html">
+								<a href="faq.php">
 									<i class="menu-icon fa fa-caret-right"></i>
 									FAQ
 								</a>
@@ -845,7 +842,7 @@
 							</li>
 
 							<li class="">
-								<a href="error-404.html">
+								<a href="error-404.php">
 									<i class="menu-icon fa fa-caret-right"></i>
 									Error 404
 								</a>
@@ -854,7 +851,7 @@
 							</li>
 
 							<li class="">
-								<a href="error-500.html">
+								<a href="error-500.php">
 									<i class="menu-icon fa fa-caret-right"></i>
 									Error 500
 								</a>
@@ -863,7 +860,7 @@
 							</li>
 
 							<li class="">
-								<a href="grid.html">
+								<a href="grid.php">
 									<i class="menu-icon fa fa-caret-right"></i>
 									Grid
 								</a>
@@ -872,7 +869,7 @@
 							</li>
 
 							<li class="">
-								<a href="blank.html">
+								<a href="blank.php">
 									<i class="menu-icon fa fa-caret-right"></i>
 									Blank Page
 								</a>
@@ -1493,7 +1490,7 @@
 															<div class="clearfix">
 																<div class="itemdiv memberdiv">
 																	<div class="user">
-																		<img alt="Bob Doe's avatar" src="assets/images/avatars/user.jpg" />
+																		<img alt="Bob Doe's avatar" src="../assets/images/avatars/user.jpg" />
 																	</div>
 
 																	<div class="body">
@@ -1546,7 +1543,7 @@
 
 																<div class="itemdiv memberdiv">
 																	<div class="user">
-																		<img alt="Joe Doe's avatar" src="assets/images/avatars/avatar2.png" />
+																		<img alt="Joe Doe's avatar" src="../assets/images/avatars/avatar2.png" />
 																	</div>
 
 																	<div class="body">
@@ -1599,7 +1596,7 @@
 
 																<div class="itemdiv memberdiv">
 																	<div class="user">
-																		<img alt="Jim Doe's avatar" src="assets/images/avatars/avatar.png" />
+																		<img alt="Jim Doe's avatar" src="../assets/images/avatars/avatar.png" />
 																	</div>
 
 																	<div class="body">
@@ -1652,7 +1649,7 @@
 
 																<div class="itemdiv memberdiv">
 																	<div class="user">
-																		<img alt="Alex Doe's avatar" src="assets/images/avatars/avatar5.png" />
+																		<img alt="Alex Doe's avatar" src="../assets/images/avatars/avatar5.png" />
 																	</div>
 
 																	<div class="body">
@@ -1673,7 +1670,7 @@
 
 																<div class="itemdiv memberdiv">
 																	<div class="user">
-																		<img alt="Bob Doe's avatar" src="assets/images/avatars/avatar2.png" />
+																		<img alt="Bob Doe's avatar" src="../assets/images/avatars/avatar2.png" />
 																	</div>
 
 																	<div class="body">
@@ -1694,7 +1691,7 @@
 
 																<div class="itemdiv memberdiv">
 																	<div class="user">
-																		<img alt="Susan's avatar" src="assets/images/avatars/avatar3.png" />
+																		<img alt="Susan's avatar" src="../assets/images/avatars/avatar3.png" />
 																	</div>
 
 																	<div class="body">
@@ -1715,7 +1712,7 @@
 
 																<div class="itemdiv memberdiv">
 																	<div class="user">
-																		<img alt="Phil Doe's avatar" src="assets/images/avatars/avatar4.png" />
+																		<img alt="Phil Doe's avatar" src="../assets/images/avatars/avatar4.png" />
 																	</div>
 
 																	<div class="body">
@@ -1736,7 +1733,7 @@
 
 																<div class="itemdiv memberdiv">
 																	<div class="user">
-																		<img alt="Alexa Doe's avatar" src="assets/images/avatars/avatar1.png" />
+																		<img alt="Alexa Doe's avatar" src="../assets/images/avatars/avatar1.png" />
 																	</div>
 
 																	<div class="body">
@@ -1775,7 +1772,7 @@
 															<div class="comments">
 																<div class="itemdiv commentdiv">
 																	<div class="user">
-																		<img alt="Bob Doe's Avatar" src="assets/images/avatars/avatar.png" />
+																		<img alt="Bob Doe's Avatar" src="../assets/images/avatars/avatar.png" />
 																	</div>
 
 																	<div class="body">
@@ -1831,7 +1828,7 @@
 
 																<div class="itemdiv commentdiv">
 																	<div class="user">
-																		<img alt="Jennifer's Avatar" src="assets/images/avatars/avatar1.png" />
+																		<img alt="Jennifer's Avatar" src="../assets/images/avatars/avatar1.png" />
 																	</div>
 
 																	<div class="body">
@@ -1865,7 +1862,7 @@
 
 																<div class="itemdiv commentdiv">
 																	<div class="user">
-																		<img alt="Joe's Avatar" src="assets/images/avatars/avatar2.png" />
+																		<img alt="Joe's Avatar" src="../assets/images/avatars/avatar2.png" />
 																	</div>
 
 																	<div class="body">
@@ -1899,7 +1896,7 @@
 
 																<div class="itemdiv commentdiv">
 																	<div class="user">
-																		<img alt="Rita's Avatar" src="assets/images/avatars/avatar3.png" />
+																		<img alt="Rita's Avatar" src="../assets/images/avatars/avatar3.png" />
 																	</div>
 
 																	<div class="body">
@@ -1966,7 +1963,7 @@
 													<div class="dialogs">
 														<div class="itemdiv dialogdiv">
 															<div class="user">
-																<img alt="Alexa's Avatar" src="assets/images/avatars/avatar1.png" />
+																<img alt="Alexa's Avatar" src="../assets/images/avatars/avatar1.png" />
 															</div>
 
 															<div class="body">
@@ -1990,7 +1987,7 @@
 
 														<div class="itemdiv dialogdiv">
 															<div class="user">
-																<img alt="John's Avatar" src="assets/images/avatars/avatar.png" />
+																<img alt="John's Avatar" src="../assets/images/avatars/avatar.png" />
 															</div>
 
 															<div class="body">
@@ -2014,7 +2011,7 @@
 
 														<div class="itemdiv dialogdiv">
 															<div class="user">
-																<img alt="Bob's Avatar" src="assets/images/avatars/user.jpg" />
+																<img alt="Bob's Avatar" src="../assets/images/avatars/user.jpg" />
 															</div>
 
 															<div class="body">
@@ -2039,7 +2036,7 @@
 
 														<div class="itemdiv dialogdiv">
 															<div class="user">
-																<img alt="Jim's Avatar" src="assets/images/avatars/avatar4.png" />
+																<img alt="Jim's Avatar" src="../assets/images/avatars/avatar4.png" />
 															</div>
 
 															<div class="body">
@@ -2063,7 +2060,7 @@
 
 														<div class="itemdiv dialogdiv">
 															<div class="user">
-																<img alt="Alexa's Avatar" src="assets/images/avatars/avatar1.png" />
+																<img alt="Alexa's Avatar" src="../assets/images/avatars/avatar1.png" />
 															</div>
 
 															<div class="body">
@@ -2146,34 +2143,34 @@
 		<!-- basic scripts -->
 
 		<!--[if !IE]> -->
-		<script src="assets/js/jquery-2.1.4.min.js"></script>
+		<script src="../assets/js/jquery-2.1.4.min.js"></script>
 
 		<!-- <![endif]-->
 
 		<!--[if IE]>
-<script src="assets/js/jquery-1.11.3.min.js"></script>
+<script src="../assets/js/jquery-1.11.3.min.js"></script>
 <![endif]-->
 		<script type="text/javascript">
-			if('ontouchstart' in document.documentElement) document.write("<script src='assets/js/jquery.mobile.custom.min.js'>"+"<"+"/script>");
+			if('ontouchstart' in document.documentElement) document.write("<script src='../assets/js/jquery.mobile.custom.min.js'>"+"<"+"/script>");
 		</script>
-		<script src="assets/js/bootstrap.min.js"></script>
+		<script src="../assets/js/bootstrap.min.js"></script>
 
 		<!-- page specific plugin scripts -->
 
 		<!--[if lte IE 8]>
-		  <script src="assets/js/excanvas.min.js"></script>
+		  <script src="../assets/js/excanvas.min.js"></script>
 		<![endif]-->
-		<script src="assets/js/jquery-ui.custom.min.js"></script>
-		<script src="assets/js/jquery.ui.touch-punch.min.js"></script>
-		<script src="assets/js/jquery.easypiechart.min.js"></script>
-		<script src="assets/js/jquery.sparkline.index.min.js"></script>
-		<script src="assets/js/jquery.flot.min.js"></script>
-		<script src="assets/js/jquery.flot.pie.min.js"></script>
-		<script src="assets/js/jquery.flot.resize.min.js"></script>
+		<script src="../assets/js/jquery-ui.custom.min.js"></script>
+		<script src="../assets/js/jquery.ui.touch-punch.min.js"></script>
+		<script src="../assets/js/jquery.easypiechart.min.js"></script>
+		<script src="../assets/js/jquery.sparkline.index.min.js"></script>
+		<script src="../assets/js/jquery.flot.min.js"></script>
+		<script src="../assets/js/jquery.flot.pie.min.js"></script>
+		<script src="../assets/js/jquery.flot.resize.min.js"></script>
 
 		<!-- ace scripts -->
-		<script src="assets/js/ace-elements.min.js"></script>
-		<script src="assets/js/ace.min.js"></script>
+		<script src="../assets/js/ace-elements.min.js"></script>
+		<script src="../assets/js/ace.min.js"></script>
 
 		<!-- inline scripts related to this page -->
 		<script type="text/javascript">

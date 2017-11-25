@@ -97,7 +97,7 @@
 
 													<div class="clearfix">
 														
-														<button class="width-35 pull-right btn btn-sm btn-primary">
+														<button name="submit" class="width-35 pull-right btn btn-sm btn-primary">
 															<i class="ace-icon fa fa-key"></i>
 															<span class="bigger-110">Login</span>
 														</button>

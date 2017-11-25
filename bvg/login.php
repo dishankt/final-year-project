@@ -21,7 +21,9 @@ $count=mysqli_affected_rows($conn);
 if($count>0){
 	session_start();
 	$_SESSION['id']=$array['id'];
-	header("location:inbox.php");
+	$_SESSION['username'] = $array['username'];
+	$header = "location:".$type."/home.php";
+	header($header);
 }else{
 	header("location:index.php?login=failed");
 }
