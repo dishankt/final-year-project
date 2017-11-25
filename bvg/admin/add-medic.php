@@ -9,7 +9,7 @@
 	<head>
 		<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
 		<meta charset="utf-8" />
-		<title>Dashboard - Ace Admin</title>
+		<title>Add Medic - Ace Admin</title>
 
 		<meta name="description" content="overview &amp; stats" />
 		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0" />
@@ -975,10 +975,10 @@
 						</div><!-- /.ace-settings-container -->
 <div class="page-header">
 							<h1>
-								Form Elements
+								Medic
 								<small>
 									<i class="ace-icon fa fa-angle-double-right"></i>
-									Common form elements and layouts
+									Add new medic
 								</small>
 							</h1>
 						</div><!-- /.page-header -->
@@ -986,91 +986,111 @@
 						<div class="row">
 							<div class="col-xs-12">
 								<!-- PAGE CONTENT BEGINS -->
-								<form class="form-horizontal" role="form">
+								<form class="form-horizontal" action="add-medic.php" method="post" role="form">
 									<div class="form-group">
-										<label class="col-sm-3 control-label no-padding-right" for="form-field-1"> Text Field </label>
+										<label class="col-sm-3 control-label no-padding-right" for="form-field-1"> Username </label>
 
 										<div class="col-sm-9">
-											<input type="text" id="form-field-1" placeholder="Username" class="col-xs-10 col-sm-5" />
+											<input type="text" required name="username" id="form-field-1" placeholder="Username" class="col-xs-10 col-sm-5" />
 										</div>
 									</div>
 
 									<div class="space-4"></div>
 
 									<div class="form-group">
-										<label class="col-sm-3 control-label no-padding-right" for="form-field-2"> Password Field </label>
+										<label class="col-sm-3 control-label no-padding-right" for="form-field-2"> Password </label>
 
 										<div class="col-sm-9">
-											<input type="password" id="form-field-2" placeholder="Password" class="col-xs-10 col-sm-5" />
+											<input type="password" required name="password" id="form-field-2" placeholder="Password" class="col-xs-10 col-sm-5" />
 										</div>
 									</div>
 									
 									<div class="form-group">
 										<div class="col-md-offset-3 col-md-9">
-											<button class="btn btn-info" type="button">
+											<button class="btn btn-info" name="add-medic" >
 												<i class="ace-icon fa fa-check bigger-110"></i>
 												Submit
 											</button>
 										</div>
 									</div>
+									
+									
+									<?php
+										if(isset($_POST['add-medic'])){
+											$conn= mysqli_connect('localhost','root','','project');
+											$username=strip_tags($_POST['username']);
+											$username=stripslashes($username);
+											$username=mysqli_real_escape_string($conn,$username);
+
+											$password=strip_tags($_POST['password']);
+											$password=stripslashes($password);
+											$password=mysqli_real_escape_string($conn,$password);
+											$password=hash('sha512',$password);
+
+											$query="INSERT INTO medic (username,password) VALUES ('$username','$password');"; 
+
+											if(mysqli_query($conn,$query)){		
+												echo "<div class='col-md-offset-3 col-md-9'><p class='text-success'>Successfully Inserted</p></div>";
+											}else{
+												echo "<div class='col-md-offset-3 col-md-9'><p class='text-danger'>Username already exists</p></div>";
+											}
+
+										}
+									
+									?>
 
 								</form>
 			
 
 								<h4 class="pink">
 									<i class="ace-icon fa fa-hand-o-right green"></i>
-									<a href="#modal-form" role="button" class="blue" data-toggle="modal"> Form Inside a Modal Box </a>
+									<a href="#modal-table" role="button" class="blue" data-toggle="modal"> View Medics </a>
 								</h4>
 
 								
-								<div id="modal-form" class="modal" tabindex="-1">
+															
+								<div id="modal-table" class="modal fade" tabindex="-1">
 									<div class="modal-dialog">
 										<div class="modal-content">
 											<div class="modal-header">
 												<button type="button" class="close" data-dismiss="modal">&times;</button>
-												<h4 class="blue bigger">Please fill the following form fields</h4>
+												<h4 class="blue bigger">List Of All Medic</h4>
 											</div>
 
-											<div class="modal-body">
-												<div class="row">
-													<div class="col-xs-12 col-sm-7">
+											<div class="modal-body no-padding">
+												<table class="table table-striped table-bordered table-hover no-margin-bottom no-border-top">
+													<thead>
+														<tr>
+															<th>ID</th>
+															<th>Username</th>
+														</tr>
+													</thead>
 
-														<div class="form-group">
-															<label for="form-field-username">Username</label>
-
-															<div>
-																<input type="text" id="form-field-username" placeholder="Username" value="alexdoe" />
-															</div>
-														</div>
-
-														<div class="space-4"></div>
-
-														<div class="form-group">
-															<label for="form-field-first">Name</label>
-
-															<div>
-																<input type="text" id="form-field-first" placeholder="First Name" value="Alex" />
-																<input type="text" id="form-field-last" placeholder="Last Name" value="Doe" />
-															</div>
-														</div>
-													</div>
-												</div>
+													<tbody>
+													<?php
+														$conn= mysqli_connect('localhost','root','','project');
+														$query = "SELECT * FROM medic;";
+														$r = mysqli_query($conn,$query);
+														while($q = mysqli_fetch_array($r)){
+													?>
+														<tr>
+															<td><?php echo $q['id']?></td>
+															<td><?php echo $q['username']?></td>
+														</tr>
+														<?php }?>
+													</tbody>
+												</table>
 											</div>
 
-											<div class="modal-footer">
-												<button class="btn btn-sm" data-dismiss="modal">
+											<div class="modal-footer no-margin-top">
+												<button class="btn btn-sm btn-danger pull-right" data-dismiss="modal">
 													<i class="ace-icon fa fa-times"></i>
-													Cancel
-												</button>
-
-												<button class="btn btn-sm btn-primary">
-													<i class="ace-icon fa fa-check"></i>
-													Save
+													Close
 												</button>
 											</div>
-										</div>
-									</div>
-								</div><!-- PAGE CONTENT ENDS -->
+										</div><!-- /.modal-content -->
+									</div><!-- /.modal-dialog -->
+								</div>
 							</div><!-- /.col -->
 						</div><!-- /.row -->
 					</div><!-- /.page-content -->
@@ -1157,7 +1177,7 @@
 				//chosen plugin inside a modal will have a zero width because the select element is originally hidden
 				//and its width cannot be determined.
 				//so we set the width after modal is show
-				$('#modal-form').on('shown.bs.modal', function () {
+				$('#modal-table').on('shown.bs.modal', function () {
 					if(!ace.vars['touch']) {
 						$(this).find('.chosen-container').each(function(){
 							$(this).find('a:first-child').css('width' , '210px');
