@@ -1,6 +1,6 @@
 <?php
 	session_start();
-	if(!isset($_SESSION['id'])){
+	if((!isset($_SESSION['id'])) || $_SESSION['type']!='admin'){
 		header("location:../index.php");
 	}
 ?>
@@ -9,7 +9,7 @@
 	<head>
 		<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
 		<meta charset="utf-8" />
-		<title>Add Hospital - Ace Admin</title>
+		<title>Dashboard - Ace Admin</title>
 
 		<meta name="description" content="overview &amp; stats" />
 		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0" />
@@ -660,7 +660,7 @@
 
 						<ul class="submenu">
 							<li class="">
-								<a href="form-elements.php">
+								<a href="add-medic.php">
 									<i class="menu-icon fa fa-caret-right"></i>
 									Add Medic
 								</a>
@@ -669,7 +669,7 @@
 							</li>
 
 							<li class="active">
-								<a href="form-elements-2.php">
+								<a href="add-hospital.php">
 									<i class="menu-icon fa fa-caret-right"></i>
 									Add Hospital
 								</a>
@@ -678,7 +678,7 @@
 							</li>
 
 							<li class="">
-								<a href="form-wizard.php">
+								<a href="modify-medic.php">
 									<i class="menu-icon fa fa-caret-right"></i>
 									Modify Medic
 								</a>
@@ -687,7 +687,7 @@
 							</li>
 
 							<li class="">
-								<a href="wysiwyg.php">
+								<a href="modify-hospital.php">
 									<i class="menu-icon fa fa-caret-right"></i>
 									Modify Hospital
 								</a>
@@ -880,6 +880,7 @@
 					</li>
 				</ul><!-- /.nav-list -->
 
+
 				<div class="sidebar-toggle sidebar-collapse" id="sidebar-collapse">
 					<i id="sidebar-toggle-icon" class="ace-icon fa fa-angle-double-left ace-save-state" data-icon1="ace-icon fa fa-angle-double-left" data-icon2="ace-icon fa fa-angle-double-right"></i>
 				</div>
@@ -893,7 +894,11 @@
 								<i class="ace-icon fa fa-home home-icon"></i>
 								<a href="#">Home</a>
 							</li>
-							<li class="active">Dashboard</li>
+
+							<li>
+								<a href="#">Add/Modify</a>
+							</li>
+							<li class="active">Add Hospital</li>
 						</ul><!-- /.breadcrumb -->
 
 						<div class="nav-search" id="nav-search">

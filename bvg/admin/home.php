@@ -1,6 +1,6 @@
 <?php
 	session_start();
-	if(!isset($_SESSION['id'])){
+	if((!isset($_SESSION['id'])) || $_SESSION['type']!='admin'){
 		header("location:../index.php");
 	}
 ?>
@@ -63,7 +63,7 @@
 				</button>
 
 				<div class="navbar-header pull-left">
-					<a href="index.php" class="navbar-brand">
+					<a href="home.php" class="navbar-brand">
 						<small>
 							<i class="fa fa-leaf"></i>
 							Ace Admin
@@ -411,7 +411,7 @@
 
 				<ul class="nav nav-list">
 					<li class="active">
-						<a href="index.php">
+						<a href="home.php">
 							<i class="menu-icon fa fa-tachometer"></i>
 							<span class="menu-text"> Dashboard </span>
 						</a>
@@ -660,7 +660,7 @@
 
 						<ul class="submenu">
 							<li class="">
-								<a href="form-elements.php">
+								<a href="add-medic.php">
 									<i class="menu-icon fa fa-caret-right"></i>
 									Add Medic
 								</a>
@@ -669,7 +669,7 @@
 							</li>
 
 							<li class="">
-								<a href="form-elements-2.php">
+								<a href="add-hospital.php">
 									<i class="menu-icon fa fa-caret-right"></i>
 									Add Hospital
 								</a>
@@ -678,7 +678,7 @@
 							</li>
 
 							<li class="">
-								<a href="form-wizard.php">
+								<a href="modify-medic.php">
 									<i class="menu-icon fa fa-caret-right"></i>
 									Modify Medic
 								</a>
@@ -687,7 +687,7 @@
 							</li>
 
 							<li class="">
-								<a href="wysiwyg.php">
+								<a href="modify-hospital.php">
 									<i class="menu-icon fa fa-caret-right"></i>
 									Modify Hospital
 								</a>

@@ -22,6 +22,7 @@ if($count>0){
 	session_start();
 	$_SESSION['id']=$array['id'];
 	$_SESSION['username'] = $array['username'];
+	$_SESSION['type'] = $type;
 	$header = "location:".$type."/home.php";
 	header($header);
 }else{

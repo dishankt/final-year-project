@@ -1,11 +1,17 @@
+<?php
+	session_start();
+	if((!isset($_SESSION['id'])) || $_SESSION['type']!='admin'){
+		header("location:../index.php");
+	}
+?>
 <!DOCTYPE html>
 <html lang="en">
 	<head>
 		<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
 		<meta charset="utf-8" />
-		<title>More Elements - Ace Admin</title>
+		<title>Modify Hospital - Ace Admin</title>
 
-		<meta name="description" content="" />
+		<meta name="description" content="overview &amp; stats" />
 		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0" />
 
 		<!-- bootstrap & fontawesome -->
@@ -13,9 +19,6 @@
 		<link rel="stylesheet" href="../assets/font-awesome/4.5.0/css/font-awesome.min.css" />
 
 		<!-- page specific plugin styles -->
-		<link rel="stylesheet" href="../assets/css/bootstrap-duallistbox.min.css" />
-		<link rel="stylesheet" href="../assets/css/bootstrap-multiselect.min.css" />
-		<link rel="stylesheet" href="../assets/css/select2.min.css" />
 
 		<!-- text fonts -->
 		<link rel="stylesheet" href="../assets/css/fonts.googleapis.com.css" />
@@ -60,7 +63,7 @@
 				</button>
 
 				<div class="navbar-header pull-left">
-					<a href="index.html" class="navbar-brand">
+					<a href="home.php" class="navbar-brand">
 						<small>
 							<i class="fa fa-leaf"></i>
 							Ace Admin
@@ -317,7 +320,7 @@
 								</li>
 
 								<li class="dropdown-footer">
-									<a href="inbox.html">
+									<a href="inbox.php">
 										See all messages
 										<i class="ace-icon fa fa-arrow-right"></i>
 									</a>
@@ -330,7 +333,7 @@
 								<img class="nav-user-photo" src="../assets/images/avatars/user.jpg" alt="Jason's Photo" />
 								<span class="user-info">
 									<small>Welcome,</small>
-									Jason
+									<?php echo $_SESSION['username'];?>
 								</span>
 
 								<i class="ace-icon fa fa-caret-down"></i>
@@ -345,7 +348,7 @@
 								</li>
 
 								<li>
-									<a href="profile.html">
+									<a href="profile.php">
 										<i class="ace-icon fa fa-user"></i>
 										Profile
 									</a>
@@ -354,7 +357,7 @@
 								<li class="divider"></li>
 
 								<li>
-									<a href="#">
+									<a href="logout.php">
 										<i class="ace-icon fa fa-power-off"></i>
 										Logout
 									</a>
@@ -408,7 +411,7 @@
 
 				<ul class="nav nav-list">
 					<li class="">
-						<a href="index.html">
+						<a href="home.php">
 							<i class="menu-icon fa fa-tachometer"></i>
 							<span class="menu-text"> Dashboard </span>
 						</a>
@@ -441,7 +444,7 @@
 
 								<ul class="submenu">
 									<li class="">
-										<a href="top-menu.html">
+										<a href="top-menu.php">
 											<i class="menu-icon fa fa-caret-right"></i>
 											Top Menu
 										</a>
@@ -450,7 +453,7 @@
 									</li>
 
 									<li class="">
-										<a href="two-menu-1.html">
+										<a href="two-menu-1.php">
 											<i class="menu-icon fa fa-caret-right"></i>
 											Two Menus 1
 										</a>
@@ -459,7 +462,7 @@
 									</li>
 
 									<li class="">
-										<a href="two-menu-2.html">
+										<a href="two-menu-2.php">
 											<i class="menu-icon fa fa-caret-right"></i>
 											Two Menus 2
 										</a>
@@ -468,7 +471,7 @@
 									</li>
 
 									<li class="">
-										<a href="mobile-menu-1.html">
+										<a href="mobile-menu-1.php">
 											<i class="menu-icon fa fa-caret-right"></i>
 											Default Mobile Menu
 										</a>
@@ -477,7 +480,7 @@
 									</li>
 
 									<li class="">
-										<a href="mobile-menu-2.html">
+										<a href="mobile-menu-2.php">
 											<i class="menu-icon fa fa-caret-right"></i>
 											Mobile Menu 2
 										</a>
@@ -486,7 +489,7 @@
 									</li>
 
 									<li class="">
-										<a href="mobile-menu-3.html">
+										<a href="mobile-menu-3.php">
 											<i class="menu-icon fa fa-caret-right"></i>
 											Mobile Menu 3
 										</a>
@@ -497,7 +500,7 @@
 							</li>
 
 							<li class="">
-								<a href="typography.html">
+								<a href="typography.php">
 									<i class="menu-icon fa fa-caret-right"></i>
 									Typography
 								</a>
@@ -506,7 +509,7 @@
 							</li>
 
 							<li class="">
-								<a href="elements.html">
+								<a href="elements.php">
 									<i class="menu-icon fa fa-caret-right"></i>
 									Elements
 								</a>
@@ -515,7 +518,7 @@
 							</li>
 
 							<li class="">
-								<a href="buttons.html">
+								<a href="buttons.php">
 									<i class="menu-icon fa fa-caret-right"></i>
 									Buttons &amp; Icons
 								</a>
@@ -524,7 +527,7 @@
 							</li>
 
 							<li class="">
-								<a href="content-slider.html">
+								<a href="content-slider.php">
 									<i class="menu-icon fa fa-caret-right"></i>
 									Content Sliders
 								</a>
@@ -533,7 +536,7 @@
 							</li>
 
 							<li class="">
-								<a href="treeview.html">
+								<a href="treeview.php">
 									<i class="menu-icon fa fa-caret-right"></i>
 									Treeview
 								</a>
@@ -542,7 +545,7 @@
 							</li>
 
 							<li class="">
-								<a href="jquery-ui.html">
+								<a href="jquery-ui.php">
 									<i class="menu-icon fa fa-caret-right"></i>
 									jQuery UI
 								</a>
@@ -551,7 +554,7 @@
 							</li>
 
 							<li class="">
-								<a href="nestable-list.html">
+								<a href="nestable-list.php">
 									<i class="menu-icon fa fa-caret-right"></i>
 									Nestable Lists
 								</a>
@@ -626,7 +629,7 @@
 
 						<ul class="submenu">
 							<li class="">
-								<a href="tables.html">
+								<a href="tables.php">
 									<i class="menu-icon fa fa-caret-right"></i>
 									Simple &amp; Dynamic
 								</a>
@@ -635,7 +638,7 @@
 							</li>
 
 							<li class="">
-								<a href="jqgrid.html">
+								<a href="jqgrid.php">
 									<i class="menu-icon fa fa-caret-right"></i>
 									jqGrid plugin
 								</a>
@@ -648,7 +651,7 @@
 					<li class="active open">
 						<a href="#" class="dropdown-toggle">
 							<i class="menu-icon fa fa-pencil-square-o"></i>
-							<span class="menu-text"> Forms </span>
+							<span class="menu-text"> Add/Modify </span>
 
 							<b class="arrow fa fa-angle-down"></b>
 						</a>
@@ -657,45 +660,36 @@
 
 						<ul class="submenu">
 							<li class="">
-								<a href="form-elements.html">
+								<a href="add-medic.php">
 									<i class="menu-icon fa fa-caret-right"></i>
-									Form Elements
+									Add Medic
+								</a>
+
+								<b class="arrow"></b>
+							</li>
+
+							<li class="">
+								<a href="add-hospital.php">
+									<i class="menu-icon fa fa-caret-right"></i>
+									Add Hospital
+								</a>
+
+								<b class="arrow"></b>
+							</li>
+
+							<li class="">
+								<a href="modify-medic.php">
+									<i class="menu-icon fa fa-caret-right"></i>
+									Modify Medic
 								</a>
 
 								<b class="arrow"></b>
 							</li>
 
 							<li class="active">
-								<a href="form-elements-2.html">
+								<a href="modify-hospital.php">
 									<i class="menu-icon fa fa-caret-right"></i>
-									Form Elements 2
-								</a>
-
-								<b class="arrow"></b>
-							</li>
-
-							<li class="">
-								<a href="form-wizard.html">
-									<i class="menu-icon fa fa-caret-right"></i>
-									Wizard &amp; Validation
-								</a>
-
-								<b class="arrow"></b>
-							</li>
-
-							<li class="">
-								<a href="wysiwyg.html">
-									<i class="menu-icon fa fa-caret-right"></i>
-									Wysiwyg &amp; Markdown
-								</a>
-
-								<b class="arrow"></b>
-							</li>
-
-							<li class="">
-								<a href="dropzone.html">
-									<i class="menu-icon fa fa-caret-right"></i>
-									Dropzone File Upload
+									Modify Hospital
 								</a>
 
 								<b class="arrow"></b>
@@ -704,7 +698,7 @@
 					</li>
 
 					<li class="">
-						<a href="widgets.html">
+						<a href="widgets.php">
 							<i class="menu-icon fa fa-list-alt"></i>
 							<span class="menu-text"> Widgets </span>
 						</a>
@@ -713,7 +707,7 @@
 					</li>
 
 					<li class="">
-						<a href="calendar.html">
+						<a href="calendar.php">
 							<i class="menu-icon fa fa-calendar"></i>
 
 							<span class="menu-text">
@@ -729,7 +723,7 @@
 					</li>
 
 					<li class="">
-						<a href="gallery.html">
+						<a href="gallery.php">
 							<i class="menu-icon fa fa-picture-o"></i>
 							<span class="menu-text"> Gallery </span>
 						</a>
@@ -749,7 +743,7 @@
 
 						<ul class="submenu">
 							<li class="">
-								<a href="profile.html">
+								<a href="profile.php">
 									<i class="menu-icon fa fa-caret-right"></i>
 									User Profile
 								</a>
@@ -758,7 +752,7 @@
 							</li>
 
 							<li class="">
-								<a href="inbox.html">
+								<a href="inbox.php">
 									<i class="menu-icon fa fa-caret-right"></i>
 									Inbox
 								</a>
@@ -767,7 +761,7 @@
 							</li>
 
 							<li class="">
-								<a href="pricing.html">
+								<a href="pricing.php">
 									<i class="menu-icon fa fa-caret-right"></i>
 									Pricing Tables
 								</a>
@@ -776,7 +770,7 @@
 							</li>
 
 							<li class="">
-								<a href="invoice.html">
+								<a href="invoice.php">
 									<i class="menu-icon fa fa-caret-right"></i>
 									Invoice
 								</a>
@@ -785,7 +779,7 @@
 							</li>
 
 							<li class="">
-								<a href="timeline.html">
+								<a href="timeline.php">
 									<i class="menu-icon fa fa-caret-right"></i>
 									Timeline
 								</a>
@@ -794,7 +788,7 @@
 							</li>
 
 							<li class="">
-								<a href="search.html">
+								<a href="search.php">
 									<i class="menu-icon fa fa-caret-right"></i>
 									Search Results
 								</a>
@@ -803,7 +797,7 @@
 							</li>
 
 							<li class="">
-								<a href="email.html">
+								<a href="email.php">
 									<i class="menu-icon fa fa-caret-right"></i>
 									Email Templates
 								</a>
@@ -812,7 +806,7 @@
 							</li>
 
 							<li class="">
-								<a href="login.html">
+								<a href="login.php">
 									<i class="menu-icon fa fa-caret-right"></i>
 									Login &amp; Register
 								</a>
@@ -839,7 +833,7 @@
 
 						<ul class="submenu">
 							<li class="">
-								<a href="faq.html">
+								<a href="faq.php">
 									<i class="menu-icon fa fa-caret-right"></i>
 									FAQ
 								</a>
@@ -848,7 +842,7 @@
 							</li>
 
 							<li class="">
-								<a href="error-404.html">
+								<a href="error-404.php">
 									<i class="menu-icon fa fa-caret-right"></i>
 									Error 404
 								</a>
@@ -857,7 +851,7 @@
 							</li>
 
 							<li class="">
-								<a href="error-500.html">
+								<a href="error-500.php">
 									<i class="menu-icon fa fa-caret-right"></i>
 									Error 500
 								</a>
@@ -866,7 +860,7 @@
 							</li>
 
 							<li class="">
-								<a href="grid.html">
+								<a href="grid.php">
 									<i class="menu-icon fa fa-caret-right"></i>
 									Grid
 								</a>
@@ -875,7 +869,7 @@
 							</li>
 
 							<li class="">
-								<a href="blank.html">
+								<a href="blank.php">
 									<i class="menu-icon fa fa-caret-right"></i>
 									Blank Page
 								</a>
@@ -885,6 +879,7 @@
 						</ul>
 					</li>
 				</ul><!-- /.nav-list -->
+
 
 				<div class="sidebar-toggle sidebar-collapse" id="sidebar-collapse">
 					<i id="sidebar-toggle-icon" class="ace-icon fa fa-angle-double-left ace-save-state" data-icon1="ace-icon fa fa-angle-double-left" data-icon2="ace-icon fa fa-angle-double-right"></i>
@@ -901,9 +896,9 @@
 							</li>
 
 							<li>
-								<a href="#">Forms</a>
+								<a href="#">Add/Modify</a>
 							</li>
-							<li class="active">Form Elements 2</li>
+							<li class="active">Modify Hospital</li>
 						</ul><!-- /.breadcrumb -->
 
 						<div class="nav-search" id="nav-search">
@@ -985,150 +980,142 @@
 						</div><!-- /.ace-settings-container -->
 
 						<div class="page-header">
-							<h1>More Elements </h1>
+							<h1>
+								Hospital
+								<small>
+									<i class="ace-icon fa fa-angle-double-right"></i>
+									Modify existing hospital
+								</small>
+							</h1>
 						</div><!-- /.page-header -->
 
 						<div class="row">
 							<div class="col-xs-12">
 								<!-- PAGE CONTENT BEGINS -->
-								<form class="form-horizontal" role="form">
-									<div class="form-group">
-										<label class="col-sm-3 control-label no-padding-top"> Star Rating </label>
 
-										<div class="col-sm-9">
-											<div class="rating inline"></div>
+										<table id="simple-table" class="table  table-bordered table-hover">
+											<thead>
+												<tr>
+													<th>ID</th>
+													<th>Username</th>
+													<th></th>
+												</tr>
+											</thead>
 
-											<div class="hr hr-16 hr-dotted"></div>
-										</div>
-									</div>
+											<tbody>
+												<?php
+													$conn = mysqli_connect('localhost','root','','project');
+													$query = "SELECT * FROM hospital;";
+													$r = mysqli_query($conn,$query);
+													while($q = mysqli_fetch_array($r)){
+												?>
+												<tr>
+													<td><?php echo $q['id']?></td>
+													<td><?php echo $q['username']?></td>
+													
+													<td>
+														<div class="hidden-sm hidden-xs btn-group">
+															
+															<form action="modify-hospital-code.php" method="post">
+															<a href="#modal-form"  role="button" class="blue" data-toggle="modal">
+															<button type="button" data-username="<?php echo $q['username']?>" data-id="<?php echo $q['id']?>" class="btn btn-xs btn-info" name="edit-button">
+																<i class="ace-icon fa fa-pencil bigger-120"></i>
+															</button>
+															</a>
+															
+															<input type="hidden" value="<?php echo $q['id']?>" name="currentid">
+															<button class="btn btn-xs btn-danger" name="delete">
+																
+																<i class="ace-icon fa fa-trash-o bigger-120"></i>
+															</button>
+															</form>
+															
+														</div>
 
-									<div class="form-group">
-										<label class="col-sm-3 control-label no-padding-right">Typeahead.js</label>
+														<div class="hidden-md hidden-lg">
+															<div class="inline pos-rel">
+																<button class="btn btn-minier btn-primary dropdown-toggle" data-toggle="dropdown" data-position="auto">
+																	<i class="ace-icon fa fa-cog icon-only bigger-110"></i>
+																</button>
 
-										<div class="col-sm-9">
-											<div class="pos-rel">
-												<input class="typeahead scrollable" type="text" placeholder="States of USA" />
+																<ul class="dropdown-menu dropdown-only-icon dropdown-yellow dropdown-menu-right dropdown-caret dropdown-close">																	<li>
+																	<li>	
+																		<a href="#" class="tooltip-success" data-rel="tooltip" title="Edit">
+																			<span class="green">
+																				<i class="ace-icon fa fa-pencil-square-o bigger-120"></i>
+																			</span>
+																		</a>
+																	</li>
+
+																	<li>
+																		<a href="#" class="tooltip-error" data-rel="tooltip" title="Delete">
+																			<span class="red">
+																				<i class="ace-icon fa fa-trash-o bigger-120"></i>
+																			</span>
+																		</a>
+																	</li>
+																</ul>
+															</div>
+														</div>
+													</td>
+												</tr>
+													<?php }?>
+											</tbody>
+										</table>
+										
+									<div id="modal-form" class="modal" tabindex="-1">
+									<div class="modal-dialog">
+										<div class="modal-content">
+											<div class="modal-header">
+												<button type="button" class="close" data-dismiss="modal">&times;</button>
+												<h4 class="blue bigger">Update Info</h4>
+											</div>
+
+											<div class="modal-body">
+												<div class="row">
+													<div class="col-xs-12 col-sm-7">
+														
+														<form action="modify-hospital-code.php" method="post">
+														<input type="hidden" name="id" id="hidden-id">
+														<div class="form-group">
+															<label for="form-field-username">Username</label>
+
+															<div>
+																<input required type="text" name="username" id="form-field-username"/>
+															</div>
+														</div>
+
+														<div class="space-4"></div>
+
+														<div class="form-group">
+															<label for="form-field-password">Password</label>
+
+															<div>
+																<input required type="password" name="password" id="form-field-password" value=""/>
+															</div>
+														</div>
+
+													</div>
+												</div>
+											</div>
+
+											<div class="modal-footer">
+												<button type="button" class="btn btn-sm" data-dismiss="modal">
+													<i class="ace-icon fa fa-times"></i>
+													Cancel
+												</button>
+
+												<button name="edit" class="btn btn-sm btn-primary">
+													<i class="ace-icon fa fa-check"></i>
+													Save
+												</button>
+												</form>
 											</div>
 										</div>
 									</div>
-
-									<div class="space-6"></div>
-
-									<div class="form-group">
-										<label class="control-label col-xs-12 col-sm-3 no-padding-right" for="food">Bootstrap Multiselect</label>
-
-										<div class="col-xs-12 col-sm-9">
-											<select id="food" class="multiselect" multiple="">
-												<option value="cheese">Cheese</option>
-												<option value="tomatoes">Tomatoes</option>
-												<option value="mozarella">Mozzarella</option>
-												<option value="mushrooms">Mushrooms</option>
-												<option value="pepperoni">Pepperoni</option>
-											</select>
-										</div>
-									</div>
-
-									<div class="hr hr-16 hr-dotted"></div>
-
-									<div class="form-group">
-										<label class="col-sm-3 control-label no-padding-top" for="duallist"> Dual listbox </label>
-
-										<div class="col-sm-8">
-											<select multiple="multiple" size="10" name="duallistbox_demo1[]" id="duallist">
-												<option value="option1">Option 1</option>
-												<option value="option2">Option 2</option>
-												<option value="option3" selected="selected">Option 3</option>
-												<option value="option4">Option 4</option>
-												<option value="option5">Option 5</option>
-												<option value="option6" selected="selected">Option 6</option>
-												<option value="option7">Option 7</option>
-												<option value="option8">Option 8</option>
-												<option value="option9">Option 9</option>
-												<option value="option0">Option 10</option>
-											</select>
-
-											<div class="hr hr-16 hr-dotted"></div>
-										</div>
-									</div>
-
-									<div class="form-group">
-										<label class="control-label col-xs-12 col-sm-3 no-padding-right"> Select2 </label>
-
-										<div class="col-xs-12 col-sm-9">
-											<select multiple="" id="state" name="state" class="select2" data-placeholder="Click to Choose...">
-												<option value="AL">Alabama</option>
-												<option value="AK">Alaska</option>
-												<option value="AZ">Arizona</option>
-												<option value="AR">Arkansas</option>
-												<option value="CA">California</option>
-												<option value="CO">Colorado</option>
-												<option value="CT">Connecticut</option>
-												<option value="DE">Delaware</option>
-												<option value="FL">Florida</option>
-												<option value="GA">Georgia</option>
-												<option value="HI">Hawaii</option>
-												<option value="ID">Idaho</option>
-												<option value="IL">Illinois</option>
-												<option value="IN">Indiana</option>
-												<option value="IA">Iowa</option>
-												<option value="KS">Kansas</option>
-												<option value="KY">Kentucky</option>
-												<option value="LA">Louisiana</option>
-												<option value="ME">Maine</option>
-												<option value="MD">Maryland</option>
-												<option value="MA">Massachusetts</option>
-												<option value="MI">Michigan</option>
-												<option value="MN">Minnesota</option>
-												<option value="MS">Mississippi</option>
-												<option value="MO">Missouri</option>
-												<option value="MT">Montana</option>
-												<option value="NE">Nebraska</option>
-												<option value="NV">Nevada</option>
-												<option value="NH">New Hampshire</option>
-												<option value="NJ">New Jersey</option>
-												<option value="NM">New Mexico</option>
-												<option value="NY">New York</option>
-												<option value="NC">North Carolina</option>
-												<option value="ND">North Dakota</option>
-												<option value="OH">Ohio</option>
-												<option value="OK">Oklahoma</option>
-												<option value="OR">Oregon</option>
-												<option value="PA">Pennsylvania</option>
-												<option value="RI">Rhode Island</option>
-												<option value="SC">South Carolina</option>
-												<option value="SD">South Dakota</option>
-												<option value="TN">Tennessee</option>
-												<option value="TX">Texas</option>
-												<option value="UT">Utah</option>
-												<option value="VT">Vermont</option>
-												<option value="VA">Virginia</option>
-												<option value="WA">Washington</option>
-												<option value="WV">West Virginia</option>
-												<option value="WI">Wisconsin</option>
-												<option value="WY">Wyoming</option>
-											</select>
-
-											<span class="inline pull-right">
-												<span class="grey">style:</span>
-
-												<span class="btn-toolbar inline middle no-margin">
-													<span id="select2-multiple-style" data-toggle="buttons" class="btn-group no-margin">
-														<label class="btn btn-xs btn-yellow active">
-															1
-															<input type="radio" value="1" />
-														</label>
-
-														<label class="btn btn-xs btn-yellow">
-															2
-															<input type="radio" value="2" />
-														</label>
-													</span>
-												</span>
-											</span>
-										</div>
-									</div>
-								</form>
-
+								</div>
+								
+							
 								<!-- PAGE CONTENT ENDS -->
 							</div><!-- /.col -->
 						</div><!-- /.row -->
@@ -1183,125 +1170,45 @@
 		<script src="../assets/js/bootstrap.min.js"></script>
 
 		<!-- page specific plugin scripts -->
-		<script src="../assets/js/jquery.bootstrap-duallistbox.min.js"></script>
-		<script src="../assets/js/jquery.raty.min.js"></script>
-		<script src="../assets/js/bootstrap-multiselect.min.js"></script>
-		<script src="../assets/js/select2.min.js"></script>
-		<script src="../assets/js/jquery-typeahead.js"></script>
+		<script src="../assets/js/jquery.dataTables.min.js"></script>
+		<script src="../assets/js/jquery.dataTables.bootstrap.min.js"></script>
+		<script src="../assets/js/dataTables.buttons.min.js"></script>
+		<script src="../assets/js/buttons.flash.min.js"></script>
+		<script src="../assets/js/buttons.html5.min.js"></script>
+		<script src="../assets/js/buttons.print.min.js"></script>
+		<script src="../assets/js/buttons.colVis.min.js"></script>
+		<script src="../assets/js/dataTables.select.min.js"></script>
 
 		<!-- ace scripts -->
 		<script src="../assets/js/ace-elements.min.js"></script>
 		<script src="../assets/js/ace.min.js"></script>
 
 		<!-- inline scripts related to this page -->
-		<script type="text/javascript">
-			jQuery(function($){
-			    var demo1 = $('select[name="duallistbox_demo1[]"]').bootstrapDualListbox({infoTextFiltered: '<span class="label label-purple label-lg">Filtered</span>'});
-				var container1 = demo1.bootstrapDualListbox('getContainer');
-				container1.find('.btn').addClass('btn-white btn-info btn-bold');
+		<script>
+		jQuery(function($) {	
 			
-				/**var setRatingColors = function() {
-					$(this).find('.star-on-png,.star-half-png').addClass('orange2').removeClass('grey');
-					$(this).find('.star-off-png').removeClass('orange2').addClass('grey');
-				}*/
-				$('.rating').raty({
-					'cancel' : true,
-					'half': true,
-					'starType' : 'i'
-					/**,
-					
-					'click': function() {
-						setRatingColors.call(this);
-					},
-					'mouseover': function() {
-						setRatingColors.call(this);
-					},
-					'mouseout': function() {
-						setRatingColors.call(this);
-					}*/
-				})//.find('i:not(.star-raty)').addClass('grey');
-				
-				
-				
-				//////////////////
-				//select2
-				$('.select2').css('width','200px').select2({allowClear:true})
-				$('#select2-multiple-style .btn').on('click', function(e){
-					var target = $(this).find('input[type=radio]');
-					var which = parseInt(target.val());
-					if(which == 2) $('.select2').addClass('tag-input-style');
-					 else $('.select2').removeClass('tag-input-style');
-				});
-				
-				//////////////////
-				$('.multiselect').multiselect({
-				 enableFiltering: true,
-				 enableHTML: true,
-				 buttonClass: 'btn btn-white btn-primary',
-				 templates: {
-					button: '<button type="button" class="multiselect dropdown-toggle" data-toggle="dropdown"><span class="multiselect-selected-text"></span> &nbsp;<b class="fa fa-caret-down"></b></button>',
-					ul: '<ul class="multiselect-container dropdown-menu"></ul>',
-					filter: '<li class="multiselect-item filter"><div class="input-group"><span class="input-group-addon"><i class="fa fa-search"></i></span><input class="form-control multiselect-search" type="text"></div></li>',
-					filterClearBtn: '<span class="input-group-btn"><button class="btn btn-default btn-white btn-grey multiselect-clear-filter" type="button"><i class="fa fa-times-circle red2"></i></button></span>',
-					li: '<li><a tabindex="0"><label></label></a></li>',
-			        divider: '<li class="multiselect-item divider"></li>',
-			        liGroup: '<li class="multiselect-item multiselect-group"><label></label></li>'
-				 }
-				});
-			
-				
-				///////////////////
-					
-				//typeahead.js
-				//example taken from plugin's page at: https://twitter.github.io/typeahead.js/examples/
-				var substringMatcher = function(strs) {
-					return function findMatches(q, cb) {
-						var matches, substringRegex;
-					 
-						// an array that will be populated with substring matches
-						matches = [];
-					 
-						// regex used to determine if a string contains the substring `q`
-						substrRegex = new RegExp(q, 'i');
-					 
-						// iterate through the pool of strings and for any string that
-						// contains the substring `q`, add it to the `matches` array
-						$.each(strs, function(i, str) {
-							if (substrRegex.test(str)) {
-								// the typeahead jQuery plugin expects suggestions to a
-								// JavaScript object, refer to typeahead docs for more info
-								matches.push({ value: str });
-							}
+							$('#modal-form').on('shown.bs.modal', function () {
+					if(!ace.vars['touch']) {
+						$(this).find('.chosen-container').each(function(){
+							$(this).find('a:first-child').css('width' , '210px');
+							$(this).find('.chosen-drop').css('width' , '210px');
+							$(this).find('.chosen-search input').css('width' , '200px');
+							$("#form-field-username").val("Dolly Duck");
+
 						});
-			
-						cb(matches);
 					}
-				 }
-			
-				 $('input.typeahead').typeahead({
-					hint: true,
-					highlight: true,
-					minLength: 1
-				 }, {
-					name: 'states',
-					displayKey: 'value',
-					source: substringMatcher(ace.vars['US_STATES']),
-					limit: 10
-				 });
-					
-					
-				///////////////
-				
-				
-				//in ajax mode, remove remaining elements before leaving page
-				$(document).one('ajaxloadstart.page', function(e) {
-					$('[class*=select2]').remove();
-					$('select[name="duallistbox_demo1[]"]').bootstrapDualListbox('destroy');
-					$('.rating').raty('destroy');
-					$('.multiselect').multiselect('destroy');
-				});
-			
-			});
+				})
+			})
 		</script>
+		
+		<script>
+				$("[name=edit-button]").click(function(){
+					 var username = $(this).attr('data-username');
+					 var id = $(this).attr('data-id');
+					 $("#form-field-username").val(username);
+					 $("#hidden-id").val(id);
+				});
+		</script>
+
 	</body>
 </html>
