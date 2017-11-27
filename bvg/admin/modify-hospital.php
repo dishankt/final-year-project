@@ -1016,19 +1016,17 @@
 													<td>
 														<div class="hidden-sm hidden-xs btn-group">
 															
-															<form action="modify-hospital-code.php" method="post">
 															<a href="#modal-form"  role="button" class="blue" data-toggle="modal">
 															<button type="button" data-username="<?php echo $q['username']?>" data-id="<?php echo $q['id']?>" class="btn btn-xs btn-info" name="edit-button">
 																<i class="ace-icon fa fa-pencil bigger-120"></i>
 															</button>
 															</a>
 															
-															<input type="hidden" value="<?php echo $q['id']?>" name="currentid">
-															<button class="btn btn-xs btn-danger" name="delete">
-																
+															<a href="#modal-delete"  role="button" class="blue" data-toggle="modal">
+															<button data-id="<?php echo $q['id']?>"  class="btn btn-xs btn-danger" name="delete-button">	
 																<i class="ace-icon fa fa-trash-o bigger-120"></i>
 															</button>
-															</form>
+															</a>
 															
 														</div>
 
@@ -1114,7 +1112,31 @@
 										</div>
 									</div>
 								</div>
-								
+								<div id="modal-delete" class="modal" tabindex="-1">
+									<div class="modal-dialog">
+										<div class="modal-content">
+											<div class="modal-header">
+												<button type="button" class="close" data-dismiss="modal">&times;</button>
+												<h4 class="blue bigger">Are you sure?</h4>
+												<small>Do you really want to delete?</small>
+											</div>
+											
+											<form action="modify-medic-code.php" method="post">
+											<input type="hidden" name="id" id="id-delete">		
+											<div class="modal-footer">
+												<button type="button" class="btn btn-sm" data-dismiss="modal">
+													<i class="ace-icon fa fa-times"></i>
+													No
+												</button>
+												<button name="delete" class="btn btn-sm btn-primary">
+													<i class="ace-icon fa fa-trash"></i>
+													Yes
+												</button>
+											</form>
+											</div>
+										</div>
+									</div>
+								</div>
 							
 								<!-- PAGE CONTENT ENDS -->
 							</div><!-- /.col -->
@@ -1207,6 +1229,10 @@
 					 var id = $(this).attr('data-id');
 					 $("#form-field-username").val(username);
 					 $("#hidden-id").val(id);
+				});
+				$("[name=delete-button]").click(function(){
+					 var id = $(this).attr('data-id');
+					 $("#id-delete").val(id);
 				});
 		</script>
 

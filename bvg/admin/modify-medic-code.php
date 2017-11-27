@@ -2,7 +2,7 @@
 <?php
 	$conn = mysqli_connect('localhost','root','','project');
 	if(isset($_POST['delete'])){
-		$id = $_POST['currentid'];
+		$id = $_POST['id'];
 		$query = "DELETE FROM medic WHERE id=$id;";
 		mysqli_query($conn,$query);
 	}
