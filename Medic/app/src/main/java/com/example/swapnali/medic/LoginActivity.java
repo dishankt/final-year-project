@@ -1,5 +1,8 @@
 package com.example.swapnali.medic;
 
+import android.app.ProgressDialog;
+import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.AsyncTask;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -9,6 +12,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.io.BufferedReader;
@@ -21,16 +25,43 @@ import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
 import java.net.URL;
 import java.net.URLEncoder;
+import java.util.concurrent.ExecutionException;
 
 public class LoginActivity extends AppCompatActivity {
 
     EditText usernameEditText,passwordEditText;
     Button loginButoon;
-
+    static SharedPreferences sharedPreferences;
+    static String username;
+    static String password;
+    JSONObject result;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
+        sharedPreferences = getSharedPreferences("com.example.swapnali.medic",MODE_PRIVATE);
+        username = sharedPreferences.getString("username","");
+        password = sharedPreferences.getString("password","");
+        Log.i("user",username);
+        Log.i("password",password);
+        if(!username.isEmpty() && !password.isEmpty()){
+            Log.i("IF","Okay");
+            String[] credentials = new String[2];
+            credentials[0] = username;
+            credentials[1] = password;
+            try {
+                result = new DoLogin().execute(credentials).get();
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            } catch (ExecutionException e) {
+                e.printStackTrace();
+            }
+            try {
+                checkSuccess(result.getBoolean("success"));
+            } catch (JSONException e) {
+                e.printStackTrace();
+            }
+        }
         usernameEditText = findViewById(R.id.usernameEditText);
         passwordEditText = findViewById(R.id.passwordEditText);
         loginButoon = findViewById(R.id.loginButton);
@@ -38,20 +69,46 @@ public class LoginActivity extends AppCompatActivity {
         loginButoon.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                String username = usernameEditText.getText().toString();
-                String password = passwordEditText.getText().toString();
+                username = usernameEditText.getText().toString();
+                password = passwordEditText.getText().toString();
                 if(username.isEmpty() || password.isEmpty()){
                     Toast.makeText(LoginActivity.this,"Please fill out both fields",Toast.LENGTH_SHORT).show();
                 }else{
                     String[] credentials = new String[2];
                     credentials[0] = username;
                     credentials[1] = password;
-                    new DoLogin().execute(credentials);
+                    try {
+                        result = new DoLogin().execute(credentials).get();
+                    } catch (InterruptedException e) {
+                        e.printStackTrace();
+                    } catch (ExecutionException e) {
+                        e.printStackTrace();
+                    }
+                    try {
+                        checkSuccess(result.getBoolean("success"));
+                    } catch (JSONException e) {
+                        e.printStackTrace();
+                    }
                 }
             }
         });
 
+
     }
+
+    public void checkSuccess(boolean success){
+        if(success){
+            Toast.makeText(getApplicationContext(),"Login was successfull",Toast.LENGTH_SHORT).show();
+            sharedPreferences.edit().putString("username",username).apply();
+            sharedPreferences.edit().putString("password",password).apply();
+            Intent i = new Intent(LoginActivity.this,MainActivity.class );
+            startActivity(i);
+            finish();
+        }else{
+            Toast.makeText(getApplicationContext(),"Login failed",Toast.LENGTH_SHORT).show();
+        }
+    }
+
     private class DoLogin extends AsyncTask<String,Void,JSONObject>{
         @Override
         protected void onPreExecute() {
@@ -60,7 +117,7 @@ public class LoginActivity extends AppCompatActivity {
 
         @Override
         protected JSONObject doInBackground(String... strings) {
-            String link = "http://192.168.0.103:81/Project/bvg/medic/login.php";
+            String link = "http://ckkadam.tk/login.php";
             String username = strings[0];
             String password = strings[1];
             try {
@@ -78,9 +135,14 @@ public class LoginActivity extends AppCompatActivity {
                 outputStream.close();
                 BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(httpURLConnection.getInputStream(),"iso-8859-1"));
                 String result = bufferedReader.readLine();
+                Log.i("JSON",result);
+                JSONObject jsonResult = new JSONObject(result);
+                return jsonResult;
             } catch (MalformedURLException e) {
                 e.printStackTrace();
             } catch (IOException e) {
+                e.printStackTrace();
+            } catch (JSONException e) {
                 e.printStackTrace();
             }
             return null;
