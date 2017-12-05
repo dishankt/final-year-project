@@ -9,7 +9,7 @@
 	<head>
 		<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
 		<meta charset="utf-8" />
-		<title>BVG- Ace Admin</title>
+		<title>BVG-  Admin</title>
 
 		<meta name="description" content="overview &amp; stats" />
 		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0" />
@@ -65,8 +65,8 @@
 				<div class="navbar-header pull-left">
 					<a href="home.php" class="navbar-brand">
 						<small>
-							<i class="fa fa-leaf"></i>
-							BVG Admin
+							<i class="fa fa-ambulance red"></i>
+							 Admin
 						</small>
 					</a>
 				</div>
