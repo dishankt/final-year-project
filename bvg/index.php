@@ -9,7 +9,7 @@ if(isset($_SESSION['id'])){
 	<head>
 		<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
 		<meta charset="utf-8" />
-		<title>Login Page - Ace Admin</title>
+		<title>Login Page - BVG Admin</title>
 
 		<meta name="description" content="User login page" />
 		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0" />
@@ -49,8 +49,8 @@ if(isset($_SESSION['id'])){
 						<div class="login-container">
 							<div class="center">
 								<h1>
-									<i class="ace-icon fa fa-leaf green"></i>
-									<span class="red">Ace</span>
+									<i class="ace-icon fa fa-ambulance red"></i>
+									<span class="white">BVG</span>
 									<span class="white" id="id-text2">Application</span>
 								</h1>
 								<h4 class="blue" id="id-company-text">&copy; Company Name</h4>
@@ -89,7 +89,6 @@ if(isset($_SESSION['id'])){
 													<label class="block clearfix">
 															    <select class="form-control" name="type" id="type">
 																	<option value="admin">Admin</option>
-																	<option value="medic">Medic</option>
 																	<option value="hospital">Hospital</option>
 																</select>
 														

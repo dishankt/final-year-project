@@ -40,7 +40,7 @@ Login
     <label for="type">Type</label>
     <select class="form-control" name="type" id="type">
       <option value="admin">Admin</option>
-      <option value="medic">Medic</option>
+	  <option value="medic">Medic</option>
       <option value="hospital">Hospital</option>
     </select>
   </div>

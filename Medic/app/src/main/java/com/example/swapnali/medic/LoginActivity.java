@@ -29,7 +29,7 @@ import java.util.concurrent.ExecutionException;
 public class LoginActivity extends AppCompatActivity {
 
     EditText usernameEditText,passwordEditText;
-    Button loginButoon;
+    Button loginButton;
     static SharedPreferences sharedPreferences;
     static String username;
     static String password;
@@ -61,9 +61,9 @@ public class LoginActivity extends AppCompatActivity {
         }
         usernameEditText = findViewById(R.id.usernameEditText);
         passwordEditText = findViewById(R.id.passwordEditText);
-        loginButoon = findViewById(R.id.loginButton);
+        loginButton = findViewById(R.id.loginButton);
 
-        loginButoon.setOnClickListener(new View.OnClickListener() {
+        loginButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 username = usernameEditText.getText().toString();
