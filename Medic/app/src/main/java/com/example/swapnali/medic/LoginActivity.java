@@ -1,6 +1,5 @@
 package com.example.swapnali.medic;
 
-import android.app.ProgressDialog;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.AsyncTask;
@@ -51,13 +50,11 @@ public class LoginActivity extends AppCompatActivity {
             credentials[1] = password;
             try {
                 result = new DoLogin().execute(credentials).get();
+                checkSuccess(result.getBoolean("success"));
             } catch (InterruptedException e) {
                 e.printStackTrace();
             } catch (ExecutionException e) {
                 e.printStackTrace();
-            }
-            try {
-                checkSuccess(result.getBoolean("success"));
             } catch (JSONException e) {
                 e.printStackTrace();
             }
@@ -113,11 +110,12 @@ public class LoginActivity extends AppCompatActivity {
         @Override
         protected void onPreExecute() {
             super.onPreExecute();
+
         }
 
         @Override
         protected JSONObject doInBackground(String... strings) {
-            String link = "http://ckkadam.tk/login.php";
+            String link = "http://ckkadam.dx.am/login.php";
             String username = strings[0];
             String password = strings[1];
             try {
