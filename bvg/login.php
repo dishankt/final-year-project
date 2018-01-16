@@ -1,7 +1,6 @@
 <?php
+include 'include/db.php';
 if(isset($_POST['submit'])){
-$conn= mysqli_connect('localhost','root','','project');
-
 $username=strip_tags($_POST['username']);
 $username=stripslashes($username);
 $username=mysqli_real_escape_string($conn,$username);
@@ -26,6 +25,7 @@ if($count>0){
 	$header = "location:".$type."/home.php";
 	header($header);
 }else{
+	die();
 	header("location:index.php?login=failed");
 }
 }

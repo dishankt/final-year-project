@@ -490,7 +490,7 @@
 
 											<tbody>
 												<?php
-													$conn = mysqli_connect('localhost','root','','project');
+													include '../include/db.php';
 													$query = "SELECT * FROM hospital;";
 													$r = mysqli_query($conn,$query);
 													while($q = mysqli_fetch_array($r)){
@@ -500,7 +500,7 @@
 													<td><?php echo $q['username']?></td>
 													
 													<td>
-														<div class="hidden-sm hidden-xs btn-group">
+														<div class="btn-group">
 															
 															<a href="#modal-form"  role="button" class="blue" data-toggle="modal">
 															<button type="button" data-username="<?php echo $q['username']?>" data-id="<?php echo $q['id']?>" class="btn btn-xs btn-info" name="edit-button">
@@ -516,31 +516,6 @@
 															
 														</div>
 
-														<div class="hidden-md hidden-lg">
-															<div class="inline pos-rel">
-																<button class="btn btn-minier btn-primary dropdown-toggle" data-toggle="dropdown" data-position="auto">
-																	<i class="ace-icon fa fa-cog icon-only bigger-110"></i>
-																</button>
-
-																<ul class="dropdown-menu dropdown-only-icon dropdown-yellow dropdown-menu-right dropdown-caret dropdown-close">																	<li>
-																	<li>	
-																		<a href="#" class="tooltip-success" data-rel="tooltip" title="Edit">
-																			<span class="green">
-																				<i class="ace-icon fa fa-pencil-square-o bigger-120"></i>
-																			</span>
-																		</a>
-																	</li>
-
-																	<li>
-																		<a href="#" class="tooltip-error" data-rel="tooltip" title="Delete">
-																			<span class="red">
-																				<i class="ace-icon fa fa-trash-o bigger-120"></i>
-																			</span>
-																		</a>
-																	</li>
-																</ul>
-															</div>
-														</div>
 													</td>
 												</tr>
 													<?php }?>

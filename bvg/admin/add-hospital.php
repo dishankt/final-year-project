@@ -511,7 +511,7 @@
 									
 									<?php
 										if(isset($_POST['add-hospital'])){
-											$conn= mysqli_connect('localhost','root','','project');
+											include '../include/db.php';
 											$username=strip_tags($_POST['username']);
 											$username=stripslashes($username);
 											$username=mysqli_real_escape_string($conn,$username);
@@ -562,7 +562,7 @@
 
 													<tbody>
 													<?php
-														$conn= mysqli_connect('localhost','root','','project');
+														include '../include/db.php';
 														$query = "SELECT * FROM hospital;";
 														$r = mysqli_query($conn,$query);
 														while($q = mysqli_fetch_array($r)){

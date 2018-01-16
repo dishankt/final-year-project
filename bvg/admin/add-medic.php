@@ -585,7 +585,7 @@
 									
 									<?php
 										if(isset($_POST['add-medic'])){
-											$conn= mysqli_connect('localhost','root','','project');
+										include '../include/db.php';
 
 											$fname=strip_tags($_POST['fname']);
 											$fname=stripslashes($fname);
@@ -667,7 +667,7 @@
 
 													<tbody>
 													<?php
-														$conn= mysqli_connect('localhost','root','','project');
+                                                                                                                include '../include/db.php';
 														$query = "SELECT * FROM medic;";
 														$r = mysqli_query($conn,$query);
 														while($q = mysqli_fetch_array($r)){

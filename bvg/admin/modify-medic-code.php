@@ -1,6 +1,5 @@
-
 <?php
-	$conn = mysqli_connect('localhost','root','','project');
+	include '../include/db.php';
 	if(isset($_POST['delete'])){
 		$id = $_POST['id'];
 		$query = "DELETE FROM medic WHERE id=$id;";
