@@ -9,7 +9,7 @@
 	<head>
 		<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
 		<meta charset="utf-8" />
-		<title>Dashboard - Ace Admin</title>
+		<title>Add Medic</title>
 
 		<meta name="description" content="overview &amp; stats" />
 		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0" />
@@ -47,9 +47,21 @@
 		<script src="../assets/js/html5shiv.min.js"></script>
 		<script src="../assets/js/respond.min.js"></script>
 		<![endif]-->
+		
+		<style>
+		input[type=number]::-webkit-outer-spin-button,
+		input[type=number]::-webkit-inner-spin-button {
+		-webkit-appearance: none;
+		margin: 0;
+		}
+
+		input[type=number] {
+		-moz-appearance:textfield;
+		}
+		</style>
 	</head>
 
-	<body class="no-skin">
+<body class="no-skin">
 		<div id="navbar" class="navbar navbar-default          ace-save-state">
 			<div class="navbar-container ace-save-state" id="navbar-container">
 				<button type="button" class="navbar-toggle menu-toggler pull-left" id="menu-toggler" data-target="#sidebar">
@@ -63,10 +75,10 @@
 				</button>
 
 				<div class="navbar-header pull-left">
-					<a href="index.php" class="navbar-brand">
+					<a href="home.php" class="navbar-brand">
 						<small>
-							<i class="fa fa-leaf"></i>
-							Ace Admin
+							<i class="fa fa-ambulance red"></i>
+							 Admin
 						</small>
 					</a>
 				</div>
@@ -379,39 +391,9 @@
 					try{ace.settings.loadState('sidebar')}catch(e){}
 				</script>
 
-				<div class="sidebar-shortcuts" id="sidebar-shortcuts">
-					<div class="sidebar-shortcuts-large" id="sidebar-shortcuts-large">
-						<button class="btn btn-success">
-							<i class="ace-icon fa fa-signal"></i>
-						</button>
-
-						<button class="btn btn-info">
-							<i class="ace-icon fa fa-pencil"></i>
-						</button>
-
-						<button class="btn btn-warning">
-							<i class="ace-icon fa fa-users"></i>
-						</button>
-
-						<button class="btn btn-danger">
-							<i class="ace-icon fa fa-cogs"></i>
-						</button>
-					</div>
-
-					<div class="sidebar-shortcuts-mini" id="sidebar-shortcuts-mini">
-						<span class="btn btn-success"></span>
-
-						<span class="btn btn-info"></span>
-
-						<span class="btn btn-warning"></span>
-
-						<span class="btn btn-danger"></span>
-					</div>
-				</div><!-- /.sidebar-shortcuts -->
-
 				<ul class="nav nav-list">
 					<li class="">
-						<a href="index.php">
+						<a href="home.php">
 							<i class="menu-icon fa fa-tachometer"></i>
 							<span class="menu-text"> Dashboard </span>
 						</a>
@@ -419,235 +401,7 @@
 						<b class="arrow"></b>
 					</li>
 
-					<li class="">
-						<a href="#" class="dropdown-toggle">
-							<i class="menu-icon fa fa-desktop"></i>
-							<span class="menu-text">
-								UI &amp; Elements
-							</span>
-
-							<b class="arrow fa fa-angle-down"></b>
-						</a>
-
-						<b class="arrow"></b>
-
-						<ul class="submenu">
-							<li class="">
-								<a href="#" class="dropdown-toggle">
-									<i class="menu-icon fa fa-caret-right"></i>
-
-									Layouts
-									<b class="arrow fa fa-angle-down"></b>
-								</a>
-
-								<b class="arrow"></b>
-
-								<ul class="submenu">
-									<li class="">
-										<a href="top-menu.php">
-											<i class="menu-icon fa fa-caret-right"></i>
-											Top Menu
-										</a>
-
-										<b class="arrow"></b>
-									</li>
-
-									<li class="">
-										<a href="two-menu-1.php">
-											<i class="menu-icon fa fa-caret-right"></i>
-											Two Menus 1
-										</a>
-
-										<b class="arrow"></b>
-									</li>
-
-									<li class="">
-										<a href="two-menu-2.php">
-											<i class="menu-icon fa fa-caret-right"></i>
-											Two Menus 2
-										</a>
-
-										<b class="arrow"></b>
-									</li>
-
-									<li class="">
-										<a href="mobile-menu-1.php">
-											<i class="menu-icon fa fa-caret-right"></i>
-											Default Mobile Menu
-										</a>
-
-										<b class="arrow"></b>
-									</li>
-
-									<li class="">
-										<a href="mobile-menu-2.php">
-											<i class="menu-icon fa fa-caret-right"></i>
-											Mobile Menu 2
-										</a>
-
-										<b class="arrow"></b>
-									</li>
-
-									<li class="">
-										<a href="mobile-menu-3.php">
-											<i class="menu-icon fa fa-caret-right"></i>
-											Mobile Menu 3
-										</a>
-
-										<b class="arrow"></b>
-									</li>
-								</ul>
-							</li>
-
-							<li class="">
-								<a href="typography.php">
-									<i class="menu-icon fa fa-caret-right"></i>
-									Typography
-								</a>
-
-								<b class="arrow"></b>
-							</li>
-
-							<li class="">
-								<a href="elements.php">
-									<i class="menu-icon fa fa-caret-right"></i>
-									Elements
-								</a>
-
-								<b class="arrow"></b>
-							</li>
-
-							<li class="">
-								<a href="buttons.php">
-									<i class="menu-icon fa fa-caret-right"></i>
-									Buttons &amp; Icons
-								</a>
-
-								<b class="arrow"></b>
-							</li>
-
-							<li class="">
-								<a href="content-slider.php">
-									<i class="menu-icon fa fa-caret-right"></i>
-									Content Sliders
-								</a>
-
-								<b class="arrow"></b>
-							</li>
-
-							<li class="">
-								<a href="treeview.php">
-									<i class="menu-icon fa fa-caret-right"></i>
-									Treeview
-								</a>
-
-								<b class="arrow"></b>
-							</li>
-
-							<li class="">
-								<a href="jquery-ui.php">
-									<i class="menu-icon fa fa-caret-right"></i>
-									jQuery UI
-								</a>
-
-								<b class="arrow"></b>
-							</li>
-
-							<li class="">
-								<a href="nestable-list.php">
-									<i class="menu-icon fa fa-caret-right"></i>
-									Nestable Lists
-								</a>
-
-								<b class="arrow"></b>
-							</li>
-
-							<li class="">
-								<a href="#" class="dropdown-toggle">
-									<i class="menu-icon fa fa-caret-right"></i>
-
-									Three Level Menu
-									<b class="arrow fa fa-angle-down"></b>
-								</a>
-
-								<b class="arrow"></b>
-
-								<ul class="submenu">
-									<li class="">
-										<a href="#">
-											<i class="menu-icon fa fa-leaf green"></i>
-											Item #1
-										</a>
-
-										<b class="arrow"></b>
-									</li>
-
-									<li class="">
-										<a href="#" class="dropdown-toggle">
-											<i class="menu-icon fa fa-pencil orange"></i>
-
-											4th level
-											<b class="arrow fa fa-angle-down"></b>
-										</a>
-
-										<b class="arrow"></b>
-
-										<ul class="submenu">
-											<li class="">
-												<a href="#">
-													<i class="menu-icon fa fa-plus purple"></i>
-													Add Product
-												</a>
-
-												<b class="arrow"></b>
-											</li>
-
-											<li class="">
-												<a href="#">
-													<i class="menu-icon fa fa-eye pink"></i>
-													View Products
-												</a>
-
-												<b class="arrow"></b>
-											</li>
-										</ul>
-									</li>
-								</ul>
-							</li>
-						</ul>
-					</li>
-
-					<li class="">
-						<a href="#" class="dropdown-toggle">
-							<i class="menu-icon fa fa-list"></i>
-							<span class="menu-text"> Tables </span>
-
-							<b class="arrow fa fa-angle-down"></b>
-						</a>
-
-						<b class="arrow"></b>
-
-						<ul class="submenu">
-							<li class="">
-								<a href="tables.php">
-									<i class="menu-icon fa fa-caret-right"></i>
-									Simple &amp; Dynamic
-								</a>
-
-								<b class="arrow"></b>
-							</li>
-
-							<li class="">
-								<a href="jqgrid.php">
-									<i class="menu-icon fa fa-caret-right"></i>
-									jqGrid plugin
-								</a>
-
-								<b class="arrow"></b>
-							</li>
-						</ul>
-					</li>
-
+					
 					<li class="active open">
 						<a href="#" class="dropdown-toggle">
 							<i class="menu-icon fa fa-pencil-square-o"></i>
@@ -696,188 +450,6 @@
 							</li>
 						</ul>
 					</li>
-
-					<li class="">
-						<a href="widgets.php">
-							<i class="menu-icon fa fa-list-alt"></i>
-							<span class="menu-text"> Widgets </span>
-						</a>
-
-						<b class="arrow"></b>
-					</li>
-
-					<li class="">
-						<a href="calendar.php">
-							<i class="menu-icon fa fa-calendar"></i>
-
-							<span class="menu-text">
-								Calendar
-
-								<span class="badge badge-transparent tooltip-error" title="2 Important Events">
-									<i class="ace-icon fa fa-exclamation-triangle red bigger-130"></i>
-								</span>
-							</span>
-						</a>
-
-						<b class="arrow"></b>
-					</li>
-
-					<li class="">
-						<a href="gallery.php">
-							<i class="menu-icon fa fa-picture-o"></i>
-							<span class="menu-text"> Gallery </span>
-						</a>
-
-						<b class="arrow"></b>
-					</li>
-
-					<li class="">
-						<a href="#" class="dropdown-toggle">
-							<i class="menu-icon fa fa-tag"></i>
-							<span class="menu-text"> More Pages </span>
-
-							<b class="arrow fa fa-angle-down"></b>
-						</a>
-
-						<b class="arrow"></b>
-
-						<ul class="submenu">
-							<li class="">
-								<a href="profile.php">
-									<i class="menu-icon fa fa-caret-right"></i>
-									User Profile
-								</a>
-
-								<b class="arrow"></b>
-							</li>
-
-							<li class="">
-								<a href="inbox.php">
-									<i class="menu-icon fa fa-caret-right"></i>
-									Inbox
-								</a>
-
-								<b class="arrow"></b>
-							</li>
-
-							<li class="">
-								<a href="pricing.php">
-									<i class="menu-icon fa fa-caret-right"></i>
-									Pricing Tables
-								</a>
-
-								<b class="arrow"></b>
-							</li>
-
-							<li class="">
-								<a href="invoice.php">
-									<i class="menu-icon fa fa-caret-right"></i>
-									Invoice
-								</a>
-
-								<b class="arrow"></b>
-							</li>
-
-							<li class="">
-								<a href="timeline.php">
-									<i class="menu-icon fa fa-caret-right"></i>
-									Timeline
-								</a>
-
-								<b class="arrow"></b>
-							</li>
-
-							<li class="">
-								<a href="search.php">
-									<i class="menu-icon fa fa-caret-right"></i>
-									Search Results
-								</a>
-
-								<b class="arrow"></b>
-							</li>
-
-							<li class="">
-								<a href="email.php">
-									<i class="menu-icon fa fa-caret-right"></i>
-									Email Templates
-								</a>
-
-								<b class="arrow"></b>
-							</li>
-
-							<li class="">
-								<a href="login.php">
-									<i class="menu-icon fa fa-caret-right"></i>
-									Login &amp; Register
-								</a>
-
-								<b class="arrow"></b>
-							</li>
-						</ul>
-					</li>
-
-					<li class="">
-						<a href="#" class="dropdown-toggle">
-							<i class="menu-icon fa fa-file-o"></i>
-
-							<span class="menu-text">
-								Other Pages
-
-								<span class="badge badge-primary">5</span>
-							</span>
-
-							<b class="arrow fa fa-angle-down"></b>
-						</a>
-
-						<b class="arrow"></b>
-
-						<ul class="submenu">
-							<li class="">
-								<a href="faq.php">
-									<i class="menu-icon fa fa-caret-right"></i>
-									FAQ
-								</a>
-
-								<b class="arrow"></b>
-							</li>
-
-							<li class="">
-								<a href="error-404.php">
-									<i class="menu-icon fa fa-caret-right"></i>
-									Error 404
-								</a>
-
-								<b class="arrow"></b>
-							</li>
-
-							<li class="">
-								<a href="error-500.php">
-									<i class="menu-icon fa fa-caret-right"></i>
-									Error 500
-								</a>
-
-								<b class="arrow"></b>
-							</li>
-
-							<li class="">
-								<a href="grid.php">
-									<i class="menu-icon fa fa-caret-right"></i>
-									Grid
-								</a>
-
-								<b class="arrow"></b>
-							</li>
-
-							<li class="">
-								<a href="blank.php">
-									<i class="menu-icon fa fa-caret-right"></i>
-									Blank Page
-								</a>
-
-								<b class="arrow"></b>
-							</li>
-						</ul>
-					</li>
 				</ul><!-- /.nav-list -->
 
 
@@ -901,83 +473,10 @@
 							<li class="active">Add Medic</li>
 						</ul><!-- /.breadcrumb -->
 
-						<div class="nav-search" id="nav-search">
-							<form class="form-search">
-								<span class="input-icon">
-									<input type="text" placeholder="Search ..." class="nav-search-input" id="nav-search-input" autocomplete="off" />
-									<i class="ace-icon fa fa-search nav-search-icon"></i>
-								</span>
-							</form>
-						</div><!-- /.nav-search -->
 					</div>
 
 					<div class="page-content">
-						<div class="ace-settings-container" id="ace-settings-container">
-							<div class="btn btn-app btn-xs btn-warning ace-settings-btn" id="ace-settings-btn">
-								<i class="ace-icon fa fa-cog bigger-130"></i>
-							</div>
-
-							<div class="ace-settings-box clearfix" id="ace-settings-box">
-								<div class="pull-left width-50">
-									<div class="ace-settings-item">
-										<div class="pull-left">
-											<select id="skin-colorpicker" class="hide">
-												<option data-skin="no-skin" value="#438EB9">#438EB9</option>
-												<option data-skin="skin-1" value="#222A2D">#222A2D</option>
-												<option data-skin="skin-2" value="#C6487E">#C6487E</option>
-												<option data-skin="skin-3" value="#D0D0D0">#D0D0D0</option>
-											</select>
-										</div>
-										<span>&nbsp; Choose Skin</span>
-									</div>
-
-									<div class="ace-settings-item">
-										<input type="checkbox" class="ace ace-checkbox-2 ace-save-state" id="ace-settings-navbar" autocomplete="off" />
-										<label class="lbl" for="ace-settings-navbar"> Fixed Navbar</label>
-									</div>
-
-									<div class="ace-settings-item">
-										<input type="checkbox" class="ace ace-checkbox-2 ace-save-state" id="ace-settings-sidebar" autocomplete="off" />
-										<label class="lbl" for="ace-settings-sidebar"> Fixed Sidebar</label>
-									</div>
-
-									<div class="ace-settings-item">
-										<input type="checkbox" class="ace ace-checkbox-2 ace-save-state" id="ace-settings-breadcrumbs" autocomplete="off" />
-										<label class="lbl" for="ace-settings-breadcrumbs"> Fixed Breadcrumbs</label>
-									</div>
-
-									<div class="ace-settings-item">
-										<input type="checkbox" class="ace ace-checkbox-2" id="ace-settings-rtl" autocomplete="off" />
-										<label class="lbl" for="ace-settings-rtl"> Right To Left (rtl)</label>
-									</div>
-
-									<div class="ace-settings-item">
-										<input type="checkbox" class="ace ace-checkbox-2 ace-save-state" id="ace-settings-add-container" autocomplete="off" />
-										<label class="lbl" for="ace-settings-add-container">
-											Inside
-											<b>.container</b>
-										</label>
-									</div>
-								</div><!-- /.pull-left -->
-
-								<div class="pull-left width-50">
-									<div class="ace-settings-item">
-										<input type="checkbox" class="ace ace-checkbox-2" id="ace-settings-hover" autocomplete="off" />
-										<label class="lbl" for="ace-settings-hover"> Submenu on Hover</label>
-									</div>
-
-									<div class="ace-settings-item">
-										<input type="checkbox" class="ace ace-checkbox-2" id="ace-settings-compact" autocomplete="off" />
-										<label class="lbl" for="ace-settings-compact"> Compact Sidebar</label>
-									</div>
-
-									<div class="ace-settings-item">
-										<input type="checkbox" class="ace ace-checkbox-2" id="ace-settings-highlight" autocomplete="off" />
-										<label class="lbl" for="ace-settings-highlight"> Alt. Active Item</label>
-									</div>
-								</div><!-- /.pull-left -->
-							</div><!-- /.ace-settings-box -->
-						</div><!-- /.ace-settings-container -->
+						
 <div class="page-header">
 							<h1>
 								Medic
@@ -992,6 +491,27 @@
 							<div class="col-xs-12">
 								<!-- PAGE CONTENT BEGINS -->
 								<form class="form-horizontal" action="add-medic.php" method="post" role="form">
+								
+									<div class="form-group">
+										<label class="col-sm-3 control-label no-padding-right" for="form-field-1"> First Name </label>
+
+										<div class="col-sm-9">
+											<input type="text" required name="fname" id="form-field-1" placeholder="First Name" class="col-xs-10 col-sm-5" />
+										</div>
+									</div>
+
+									<div class="space-4"></div>
+									
+									<div class="form-group">
+										<label class="col-sm-3 control-label no-padding-right" for="form-field-1"> Last Name </label>
+
+										<div class="col-sm-9">
+											<input type="text" required name="lname" id="form-field-1" placeholder="Last Name" class="col-xs-10 col-sm-5" />
+										</div>
+									</div>
+
+									<div class="space-4"></div>
+								
 									<div class="form-group">
 										<label class="col-sm-3 control-label no-padding-right" for="form-field-1"> Username </label>
 
@@ -1010,6 +530,49 @@
 										</div>
 									</div>
 									
+									<div class="space-4"></div>
+									
+									<div class="form-group">
+										<label class="col-sm-3 control-label no-padding-right" for="form-field-2"> Email </label>
+
+										<div class="col-sm-9">
+											<input type="email" required name="email" id="form-field-2" placeholder="Email" class="col-xs-10 col-sm-5" />
+										</div>
+									</div>
+									
+									<div class="space-4"></div>
+									
+									<div class="form-group">
+										<label class="col-sm-3 control-label no-padding-right" for="form-field-1"> Phone No. </label>
+
+										<div class="col-sm-9">
+											<input type="number" required name="phone" maxlength="10" id="form-field-1" placeholder="Phone No." class="col-xs-10 col-sm-5" />
+										</div>
+									</div>
+
+									<div class="space-4"></div>
+									
+									<div class="form-group">
+										<label class="col-sm-3 control-label no-padding-right"  for="form-field-1"> Date Of Birth </label>
+
+										<div class="col-sm-9">
+											<input type="date" max="<?php echo date("Y")-18 . date("-m-d");?>" required name="dob" id="form-field-1" />
+										</div>
+									</div>
+
+									<div class="space-4"></div>
+									
+									
+									<div class="form-group">
+										<label class="col-sm-3 control-label no-padding-right" for="form-field-1"> Address </label>
+
+										<div class="col-sm-9">
+											<textarea maxlength="1000" required name="address" rows="4" id="form-field-1" placeholder="Address (Max 100 chars.)" class="col-xs-10 col-sm-5"></textarea>
+										</div>
+									</div>
+
+									<div class="space-4"></div>
+									
 									<div class="form-group">
 										<div class="col-md-offset-3 col-md-9">
 											<button class="btn btn-info" name="add-medic" >
@@ -1023,6 +586,23 @@
 									<?php
 										if(isset($_POST['add-medic'])){
 											$conn= mysqli_connect('localhost','root','','project');
+
+											$fname=strip_tags($_POST['fname']);
+											$fname=stripslashes($fname);
+											$fname=mysqli_real_escape_string($conn,$fname);
+											
+											$lname=strip_tags($_POST['lname']);
+											$lname=stripslashes($lname);
+											$lname=mysqli_real_escape_string($conn,$lname);
+											
+											$address=strip_tags($_POST['address']);
+											$address=stripslashes($address);
+											$address=mysqli_real_escape_string($conn,$address);
+
+											$email=strip_tags($_POST['email']);
+											$email=stripslashes($email);
+											$email=mysqli_real_escape_string($conn,$email);
+											
 											$username=strip_tags($_POST['username']);
 											$username=stripslashes($username);
 											$username=mysqli_real_escape_string($conn,$username);
@@ -1031,15 +611,29 @@
 											$password=stripslashes($password);
 											$password=mysqli_real_escape_string($conn,$password);
 											$password=hash('sha512',$password);
-
-											$query="INSERT INTO medic (username,password) VALUES ('$username','$password');"; 
-
-											if(mysqli_query($conn,$query)){		
-												echo "<div class='col-md-offset-3 col-md-9'><p class='text-success'>Successfully Inserted</p></div>";
+											
+											$phone = $_POST['phone'];
+											
+											$dob = $_POST['dob'];
+											$msg = "";					
+											if(!preg_match("/^[a-zA-Z]*$/",$fname)){
+												$msg = "First name contains characters other than alphabets";
+											}else if(!preg_match("/^[a-zA-Z]*$/",$lname)){
+												$msg = "Last name contains characters other than alphabets";
+											}else if(strlen($phone)!=10){
+												$msg = "Not a valid phone number ";
 											}else{
-												echo "<div class='col-md-offset-3 col-md-9'><p class='text-danger'>Username already exists</p></div>";
-											}
+											
+												$query="INSERT INTO medic (fname,lname,username,password,email,phone,dob,address) VALUES ('$fname','$lname','$username','$password','$email',$phone,'$dob','$address');"; 
 
+												if(mysqli_query($conn,$query)){		
+														echo "<div class='col-md-offset-3 col-md-9'><p class='text-success'>Successfully Inserted</p></div>";
+												}else{
+													$msg = "Username already taken";
+												}											
+											}
+											echo "<div class='col-md-offset-3 col-md-9'><p class='text-danger'>$msg</p></div>";
+											
 										}
 									
 									?>

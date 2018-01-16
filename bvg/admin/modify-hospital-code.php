@@ -2,9 +2,9 @@
 <?php
 	$conn = mysqli_connect('localhost','root','','project');
 	if(isset($_POST['delete'])){
-		$id = $_POST['currentid'];
+		$id = $_POST['id'];
 		$query = "DELETE FROM hospital WHERE id=$id;";
-		mysqli_query($conn,$query);
+		mysqli_query($conn,$query);	
 	}
 	else if(isset($_POST['edit'])){
 		$id = $_POST['id'];

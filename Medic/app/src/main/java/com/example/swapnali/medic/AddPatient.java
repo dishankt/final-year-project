@@ -1,5 +1,6 @@
 package com.example.swapnali.medic;
 
+import android.content.Intent;
 import android.os.AsyncTask;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -71,7 +72,8 @@ public class AddPatient extends AppCompatActivity {
                 }
                 Log.i("JSON", jsonObject.toString());
                 new SendData().execute(jsonObject.toString());
-                finish();
+                Intent i = new Intent(AddPatient.this,Categorize.class);
+                startActivity(i);
             }
         });
     }
