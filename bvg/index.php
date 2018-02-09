@@ -50,8 +50,8 @@ if(isset($_SESSION['id'])){
 							<div class="center">
 								<h1>
 									<i class="ace-icon fa fa-ambulance red"></i>
-									<span class="white">BVG</span>
-									<span class="white" id="id-text2">Application</span>
+									<span class="white">Patient</span>
+									<span class="white" id="id-text2">Assistance</span>
 								</h1>
 								<h4 class="blue" id="id-company-text">&copy; Company Name</h4>
 							</div>

@@ -499,6 +499,34 @@
 										</div>
 									</div>
 									
+									
+								<div class="space-4"></div>
+									<div class="form-group">
+										<label class="col-sm-3 control-label no-padding-right" for="form-field-2"> Hospital Name </label>
+										    <div class="col-sm-9">
+											<input type="text" required name="hospitalname" id="form-field-2" placeholder="Hospital Name" class="col-xs-10 col-sm-5" />
+										</div>
+									</div>
+									
+								<div class="space-4"></div>
+									<div class="form-group">
+										<label class="col-sm-3 control-label no-padding-right" for="form-field-1"> Contact No. </label>
+
+										<div class="col-sm-9">
+											<input type="number" required name="contactno" maxlength="10" id="form-field-1" placeholder="Contact" class="col-xs-10 col-sm-5" />
+										</div>
+									</div>
+									
+								<div class="space-4"></div>
+									<div class="form-group">
+										<label class="col-sm-3 control-label no-padding-right" for="form-field-1">Hospital Address </label>
+
+										<div class="col-sm-9">
+											<textarea maxlength="1000" required name="address" rows="4" id="form-field-1" placeholder="Address (Max 100 chars.)" class="col-xs-10 col-sm-5"></textarea>
+										</div>
+									</div> 
+									
+									
 									<div class="form-group">
 										<div class="col-md-offset-3 col-md-9">
 											<button class="btn btn-info" name="add-hospital" >
@@ -520,8 +548,12 @@
 											$password=stripslashes($password);
 											$password=mysqli_real_escape_string($conn,$password);
 											$password=hash('sha512',$password);
-
-											$query="INSERT INTO hospital (username,password) VALUES ('$username','$password');"; 
+											
+											$hospitalname=strip_tags($_POST['hospitalname']);
+											$hospitalname=stripslashes($hospitalname);
+											$hospitalname=mysqli_real_escape_string($conn,$hospitalname);
+										
+											$query="INSERT INTO hospital (username,password,hospitalname) VALUES ('$username','$password','$hospitalname');"; 
 
 											if(mysqli_query($conn,$query)){		
 												echo "<div class='col-md-offset-3 col-md-9'><p class='text-success'>Successfully Inserted</p></div>";
@@ -557,6 +589,9 @@
 														<tr>
 															<th>ID</th>
 															<th>Username</th>
+															<th>Hospital Name</th>
+															<th>Contact No.</th>
+															<th>Hospital Address</th>
 														</tr>
 													</thead>
 
