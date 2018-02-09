@@ -656,25 +656,35 @@
 												<h4 class="blue bigger">List Of All Medic</h4>
 											</div>
 
-											<div class="modal-body no-padding">
+											<div class="modal-body no-padding" style="overflow-x:auto;">
 												<table class="table table-striped table-bordered table-hover no-margin-bottom no-border-top">
 													<thead>
 														<tr>
-															<th>ID</th>
+															<th>#</th>
+															<th>Name</th>
 															<th>Username</th>
+															<th>Email</th>
+															<th>Phone</th>
+															<th>DOB</th>
+															<th>Address</th>
 														</tr>
 													</thead>
 
 													<tbody>
 													<?php
-                                                                                                                include '../include/db.php';
+                                                        include '../include/db.php';
 														$query = "SELECT * FROM medic;";
 														$r = mysqli_query($conn,$query);
 														while($q = mysqli_fetch_array($r)){
 													?>
 														<tr>
 															<td><?php echo $q['id']?></td>
+															<td><?php echo $q['fname'] . " " .$q['lname']?></td>
 															<td><?php echo $q['username']?></td>
+															<td><?php echo $q['email']?></td>
+															<td><?php echo $q['phone']?></td>
+															<td><?php echo $q['dob']?></td>
+															<td><?php echo $q['address']?></td>
 														</tr>
 														<?php }?>
 													</tbody>
@@ -750,21 +760,6 @@
 		<!--[if lte IE 8]>
 		  <script src="../assets/js/excanvas.min.js"></script>
 		<![endif]-->
-		<script src="../assets/js/jquery-ui.custom.min.js"></script>
-		<script src="../assets/js/jquery.ui.touch-punch.min.js"></script>
-		<script src="../assets/js/chosen.jquery.min.js"></script>
-		<script src="../assets/js/spinbox.min.js"></script>
-		<script src="../assets/js/bootstrap-datepicker.min.js"></script>
-		<script src="../assets/js/bootstrap-timepicker.min.js"></script>
-		<script src="../assets/js/moment.min.js"></script>
-		<script src="../assets/js/daterangepicker.min.js"></script>
-		<script src="../assets/js/bootstrap-datetimepicker.min.js"></script>
-		<script src="../assets/js/bootstrap-colorpicker.min.js"></script>
-		<script src="../assets/js/jquery.knob.min.js"></script>
-		<script src="../assets/js/autosize.min.js"></script>
-		<script src="../assets/js/jquery.inputlimiter.min.js"></script>
-		<script src="../assets/js/jquery.maskedinput.min.js"></script>
-		<script src="../assets/js/bootstrap-tag.min.js"></script>
 
 		<!-- ace scripts -->
 		<script src="../assets/js/ace-elements.min.js"></script>

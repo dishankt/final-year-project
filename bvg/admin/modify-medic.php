@@ -47,6 +47,19 @@
 		<script src="../assets/js/html5shiv.min.js"></script>
 		<script src="../assets/js/respond.min.js"></script>
 		<![endif]-->
+		
+				<style>
+		input[type=number]::-webkit-outer-spin-button,
+		input[type=number]::-webkit-inner-spin-button {
+		-webkit-appearance: none;
+		margin: 0;
+		}
+
+		input[type=number] {
+		-moz-appearance:textfield;
+		}
+		</style>
+
 	</head>
 
 <body class="no-skin">
@@ -477,13 +490,25 @@
 						<div class="row">
 							<div class="col-xs-12">
 								<!-- PAGE CONTENT BEGINS -->
-
-										<table id="simple-table" class="table  table-bordered table-hover">
+								<?php
+								if(isset($_GET['msg'])){
+								$msg = $_GET['msg'];
+								echo "<div><h1 class='text-danger'>$msg</h1></div>";
+								}
+								?>
+									<div style="overflow-x:auto;">
+										<table id="simple-table"  class="table  table-bordered table-hover">
 											<thead>
 												<tr>
-													<th>ID</th>
+													<th>#</th>
+													<th>First Name</th>
+													<th>Last Name</th>
 													<th>Username</th>
-													<th></th>
+													<th>Email</th>
+													<th>Phone</th>
+													<th>DOB</th>
+													<th>Address</th>
+													<th>Action</th>
 												</tr>
 											</thead>
 
@@ -496,13 +521,19 @@
 												?>
 												<tr>
 													<td><?php echo $q['id']?></td>
+													<td><?php echo $q['fname']?></td>
+													<td><?php echo $q['lname']?></td>
 													<td><?php echo $q['username']?></td>
+													<td><?php echo $q['email']?></td>
+													<td><?php echo $q['phone']?></td>
+													<td><?php echo $q['dob']?></td>
+													<td><?php echo $q['address']?></td>
 													
 													<td>
 														<div class="btn-group">
 															
 															<a href="#modal-form"  role="button" class="blue" data-toggle="modal">
-															<button data-username="<?php echo $q['username']?>" data-id="<?php echo $q['id']?>" class="btn btn-xs btn-info" name="edit-button">
+															<button data-username="<?php echo $q['username']?>" data-fname="<?php echo $q['fname']?>" data-lname="<?php echo $q['lname']?>" data-phone="<?php echo $q['phone']?>" data-dob="<?php echo $q['dob']?>" data-email="<?php echo $q['email']?>" data-address="<?php echo $q['address']?>" data-id="<?php echo $q['id']?>" class="btn btn-xs btn-info" name="edit-button">
 																<i class="ace-icon fa fa-pencil bigger-120"></i>
 															</button>
 															</a>
@@ -520,7 +551,7 @@
 													<?php }?>
 											</tbody>
 										</table>
-										
+										</div>
 									<div id="modal-form" class="modal" tabindex="-1">
 									<div class="modal-dialog">
 										<div class="modal-content">
@@ -535,6 +566,28 @@
 														
 														<form action="modify-medic-code.php" method="post">
 														<input type="hidden" name="id" id="id-edit">
+														
+														<div class="form-group">
+															<label for="form-field-fname">First name</label>
+
+															<div>
+																<input style="width:100%" required type="text" name="fname" id="form-field-fname"/>
+															</div>
+														</div>
+
+														<div class="space-4"></div>
+
+														<div class="form-group">
+															<label for="form-field-lname">Last Name</label>
+
+															<div>
+																<input required type="text" name="lname" id="form-field-lname"/>
+															</div>
+														</div>
+
+														<div class="space-4"></div>
+
+														
 														<div class="form-group">
 															<label for="form-field-username">Username</label>
 
@@ -552,6 +605,51 @@
 																<input required type="password" name="password" id="form-field-password" value=""/>
 															</div>
 														</div>
+														
+												
+														<div class="space-4"></div>
+
+														<div class="form-group">
+															<label for="form-field-email">Email</label>
+
+															<div>
+																<input required type="email" name="email" id="form-field-email" value=""/>
+															</div>
+														</div>
+														
+														
+														<div class="space-4"></div>
+
+														<div class="form-group">
+															<label for="form-field-phone">Phone</label>
+
+															<div>
+																<input required type="number" name="phone" id="form-field-phone" value=""/>
+															</div>
+														</div>
+														
+														
+														<div class="space-4"></div>
+
+														<div class="form-group">
+															<label for="form-field-dob">Date Of Birth</label>
+
+															<div>
+																<input required type="date" max="<?php echo date("Y")-18 . date("-m-d");?>" name="dob" id="form-field-dob" value=""/>
+															</div>
+														</div>
+														
+														
+														<div class="space-4"></div>
+
+														<div class="form-group">
+															<label for="form-field-address">Address</label>
+
+															<div>
+																<textarea maxlength="1000" required name="address" id="form-field-address" value=""></textarea>
+															</div>
+														</div>
+
 													</div>
 												</div>
 											</div>
@@ -666,40 +764,24 @@
 		<script src="../assets/js/ace-elements.min.js"></script>
 		<script src="../assets/js/ace.min.js"></script>
 
-		<!-- inline scripts related to this page -->
-		<script>
-		jQuery(function($) {	
-			
-				$('#modal-form').on('shown.bs.modal', function () {
-					if(!ace.vars['touch']) {
-						$(this).find('.chosen-container').each(function(){
-							$(this).find('a:first-child').css('width' , '210px');
-							$(this).find('.chosen-drop').css('width' , '210px');
-							$(this).find('.chosen-search input').css('width' , '200px');
-							$("#form-field-username").val("Dolly Duck");
-
-						});
-					}
-				})
-				$('#modal-delete').on('shown.bs.modal', function () {
-					if(!ace.vars['touch']) {
-						$(this).find('.chosen-container').each(function(){
-							$(this).find('a:first-child').css('width' , '210px');
-							$(this).find('.chosen-drop').css('width' , '210px');
-							$(this).find('.chosen-search input').css('width' , '200px');
-							$("#form-field-username").val("Dolly Duck");
-
-						});
-					}
-				})
-			})
-		</script>
 		
 		<script>
 				$("[name=edit-button]").click(function(){
 					 var username = $(this).attr('data-username');
+					 var fname = $(this).attr('data-fname');
+					 var lname = $(this).attr('data-lname');
+					 var address = $(this).attr('data-address');
+					 var email = $(this).attr('data-email');
+					 var phone = $(this).attr('data-phone');
+					 var dob = $(this).attr('data-dob');
 					 var id = $(this).attr('data-id');
 					 $("#form-field-username").val(username);
+					 $("#form-field-fname").val(fname);
+					 $("#form-field-lname").val(lname);
+					 $("#form-field-address").val(address);
+					 $("#form-field-email").val(email);
+					 $("#form-field-phone").val(phone);
+					 $("#form-field-dob").val(dob);
 					 $("#id-edit").val(id);
 				});
 				$("[name=delete-button]").click(function(){
