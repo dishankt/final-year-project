@@ -6,20 +6,9 @@
     android:layout_height="match_parent"
     tools:context="com.example.swapnali.medic.ChooseHospital">
 
-    <EditText
-        android:id="@+id/editText"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentTop="true"
-        android:layout_marginTop="12dp"
-        android:ems="10"
-        android:inputType="textPersonName" />
-
     <ListView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_alignParentStart="true"
-        android:layout_below="@+id/editText"
         android:layout_marginTop="11dp" />
 </RelativeLayout>
