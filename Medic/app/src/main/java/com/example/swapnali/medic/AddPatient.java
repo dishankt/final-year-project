@@ -36,6 +36,7 @@ public class AddPatient extends AppCompatActivity {
     Button submit;
     EditText name,address,age,phone;
     String nameString, addressString, ageString, phoneString, bloodString;
+    static int patientID;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -72,7 +73,7 @@ public class AddPatient extends AppCompatActivity {
                 }
                 Log.i("JSON", jsonObject.toString());
                 new SendData().execute(jsonObject.toString());
-                Intent i = new Intent(AddPatient.this,Categorize.class);
+                Intent i = new Intent(AddPatient.this,ChooseHospital.class);
                 startActivity(i);
             }
         });
@@ -100,7 +101,7 @@ public class AddPatient extends AppCompatActivity {
                 outputStream.close();
                 BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(httpURLConnection.getInputStream(),"iso-8859-1"));
                 result += bufferedReader.readLine();
-                Log.i("Result",result);
+                patientID = Integer.parseInt(result);
             } catch (MalformedURLException e) {
                 e.printStackTrace();
             } catch (UnsupportedEncodingException e) {

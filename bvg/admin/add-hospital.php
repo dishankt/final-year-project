@@ -47,6 +47,18 @@
 		<script src="../assets/js/html5shiv.min.js"></script>
 		<script src="../assets/js/respond.min.js"></script>
 		<![endif]-->
+		
+		<style>
+		input[type=number]::-webkit-outer-spin-button,
+		input[type=number]::-webkit-inner-spin-button {
+		-webkit-appearance: none;
+		margin: 0;
+		}
+
+		input[type=number] {
+		-moz-appearance:textfield;
+		}
+		</style>
 	</head>
 
 	<body class="no-skin">
@@ -504,16 +516,25 @@
 									<div class="form-group">
 										<label class="col-sm-3 control-label no-padding-right" for="form-field-2"> Hospital Name </label>
 										    <div class="col-sm-9">
-											<input type="text" required name="hospitalname" id="form-field-2" placeholder="Hospital Name" class="col-xs-10 col-sm-5" />
+											<input type="text" required name="name" id="form-field-2" placeholder="Hospital Name" class="col-xs-10 col-sm-5" />
 										</div>
 									</div>
 									
 								<div class="space-4"></div>
 									<div class="form-group">
-										<label class="col-sm-3 control-label no-padding-right" for="form-field-1"> Contact No. </label>
+										<label class="col-sm-3 control-label no-padding-right" for="form-field-1"> Email </label>
 
 										<div class="col-sm-9">
-											<input type="number" required name="contactno" maxlength="10" id="form-field-1" placeholder="Contact" class="col-xs-10 col-sm-5" />
+											<input type="email" required name="email"  id="form-field-1" placeholder="Email" class="col-xs-10 col-sm-5" />
+										</div>
+									</div>
+									
+								<div class="space-4"></div>
+									<div class="form-group">
+										<label class="col-sm-3 control-label no-padding-right" for="form-field-1"> Phone No. </label>
+
+										<div class="col-sm-9">
+											<input type="number" required name="phone" maxlength="10" id="form-field-1" placeholder="Phone No." class="col-xs-10 col-sm-5" />
 										</div>
 									</div>
 									
@@ -522,7 +543,7 @@
 										<label class="col-sm-3 control-label no-padding-right" for="form-field-1">Hospital Address </label>
 
 										<div class="col-sm-9">
-											<textarea maxlength="1000" required name="address" rows="4" id="form-field-1" placeholder="Address (Max 100 chars.)" class="col-xs-10 col-sm-5"></textarea>
+											<textarea maxlength="1000" required name="address" rows="4" id="form-field-1" placeholder="Address (Max 1000 chars.)" class="col-xs-10 col-sm-5"></textarea>
 										</div>
 									</div> 
 									
@@ -549,18 +570,34 @@
 											$password=mysqli_real_escape_string($conn,$password);
 											$password=hash('sha512',$password);
 											
-											$hospitalname=strip_tags($_POST['hospitalname']);
+											$hospitalname=strip_tags($_POST['name']);
 											$hospitalname=stripslashes($hospitalname);
 											$hospitalname=mysqli_real_escape_string($conn,$hospitalname);
+											
+											$email=strip_tags($_POST['email']);
+											$email=stripslashes($email);
+											$email=mysqli_real_escape_string($conn,$email);
 										
-											$query="INSERT INTO hospital (username,password,hospitalname) VALUES ('$username','$password','$hospitalname');"; 
+											$address=strip_tags($_POST['address']);
+											$address=stripslashes($address);
+											$address=mysqli_real_escape_string($conn,$address);
+										
+											$phone=$_POST['phone'];
+											
+											$msg = "";
+											
+											if(strlen($phone)!=10){
+												$msg = "Not a valid phone number ";
+											}else{
+											$query="INSERT INTO hospital (username,password,name,phone,email,address) VALUES ('$username','$password','$hospitalname',$phone,'$email','$address');"; 
 
 											if(mysqli_query($conn,$query)){		
-												echo "<div class='col-md-offset-3 col-md-9'><p class='text-success'>Successfully Inserted</p></div>";
-											}else{
-												echo "<div class='col-md-offset-3 col-md-9'><p class='text-danger'>Username already exists</p></div>";
+														echo "<div class='col-md-offset-3 col-md-9'><p class='text-success'>Successfully Inserted</p></div>";
+												}else{
+													$msg = "Username already taken";
+												}
 											}
-
+											echo "<div class='col-md-offset-3 col-md-9'><p class='text-danger'>$msg</p></div>";
 										}
 									
 									?>
